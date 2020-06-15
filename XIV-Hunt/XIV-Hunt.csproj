@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{DA49D064-08C9-463B-BCED-978D3AA3F549}</ProjectGuid>
+    <ProjectGuid>{258588F2-6A84-4E8C-92F6-377378F6E502}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>XIV-Hunt</RootNamespace>
     <AssemblyName>XIV-Hunt</AssemblyName>
@@ -39,146 +39,146 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
-      <HintPath>..\..\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore.SignalR.Client">
-      <HintPath>..\..\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
-      <HintPath>..\..\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson">
-      <HintPath>..\..\Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Toolkit.Uwp.Notifications">
-      <HintPath>..\..\Microsoft.Toolkit.Uwp.Notifications.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Microsoft.Toolkit.Uwp.Notifications.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Primitives">
-      <HintPath>..\..\Microsoft.Win32.Primitives.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Microsoft.Win32.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Registry">
-      <HintPath>..\..\Microsoft.Win32.Registry.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
     <Reference Include="NAudio">
-      <HintPath>..\..\NAudio.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\NAudio.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Overlay.NET">
-      <HintPath>..\..\Overlay.NET.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Overlay.NET.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
-      <HintPath>..\..\PresentationCore.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\PresentationCore.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework">
-      <HintPath>..\..\PresentationFramework.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\PresentationFramework.dll</HintPath>
     </Reference>
     <Reference Include="Process.NET">
-      <HintPath>..\..\Process.NET.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Process.NET.dll</HintPath>
     </Reference>
     <Reference Include="Splat">
-      <HintPath>..\..\Splat.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Splat.dll</HintPath>
     </Reference>
     <Reference Include="Squirrel">
-      <HintPath>..\..\Squirrel.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Squirrel.dll</HintPath>
     </Reference>
     <Reference Include="System.Collections">
-      <HintPath>..\..\System.Collections.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Collections.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel">
-      <HintPath>..\..\System.ComponentModel.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.ComponentModel.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Primitives">
-      <HintPath>..\..\System.ComponentModel.Primitives.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.ComponentModel.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.TypeConverter">
-      <HintPath>..\..\System.ComponentModel.TypeConverter.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.ComponentModel.TypeConverter.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration.ConfigurationManager">
-      <HintPath>..\..\System.Configuration.ConfigurationManager.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.Debug">
-      <HintPath>..\..\System.Diagnostics.Debug.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Diagnostics.Debug.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.Process">
-      <HintPath>..\..\System.Diagnostics.Process.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Diagnostics.Process.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.Tools">
-      <HintPath>..\..\System.Diagnostics.Tools.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Diagnostics.Tools.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing.Common">
-      <HintPath>..\..\System.Drawing.Common.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Drawing.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing.Primitives">
-      <HintPath>..\..\System.Drawing.Primitives.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Drawing.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.FileSystem">
-      <HintPath>..\..\System.IO.FileSystem.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.IO.FileSystem.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.FileSystem.Watcher">
-      <HintPath>..\..\System.IO.FileSystem.Watcher.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.IO.FileSystem.Watcher.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Pipes">
-      <HintPath>..\..\System.IO.Pipes.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.IO.Pipes.dll</HintPath>
     </Reference>
     <Reference Include="System.Linq">
-      <HintPath>..\..\System.Linq.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
-      <HintPath>..\..\System.Net.Http.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Net.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Primitives">
-      <HintPath>..\..\System.Net.Primitives.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Net.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Requests">
-      <HintPath>..\..\System.Net.Requests.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Net.Requests.dll</HintPath>
     </Reference>
     <Reference Include="System.ObjectModel">
-      <HintPath>..\..\System.ObjectModel.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.ObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="System.Resources.ResourceManager">
-      <HintPath>..\..\System.Resources.ResourceManager.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Resources.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime">
-      <HintPath>..\..\System.Runtime.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Extensions">
-      <HintPath>..\..\System.Runtime.Extensions.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Runtime.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.InteropServices">
-      <HintPath>..\..\System.Runtime.InteropServices.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Runtime.InteropServices.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
-      <HintPath>..\..\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization.Formatters">
-      <HintPath>..\..\System.Runtime.Serialization.Formatters.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Runtime.Serialization.Formatters.dll</HintPath>
     </Reference>
     <Reference Include="System.Text.RegularExpressions">
-      <HintPath>..\..\System.Text.RegularExpressions.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Text.RegularExpressions.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading">
-      <HintPath>..\..\System.Threading.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks">
-      <HintPath>..\..\System.Threading.Tasks.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Threading.Tasks.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Thread">
-      <HintPath>..\..\System.Threading.Thread.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Threading.Thread.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms">
-      <HintPath>..\..\System.Windows.Forms.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="System.Xaml">
-      <HintPath>..\..\System.Xaml.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\System.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="Windows" />
     <Reference Include="WindowsBase">
-      <HintPath>..\..\WindowsBase.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\WindowsBase.dll</HintPath>
     </Reference>
     <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>..\..\Xceed.Wpf.Toolkit.dll</HintPath>
+      <HintPath>..\..\app-5.2.1\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="WindowsFormsIntegration" />
     <Reference Include="System.Windows.Controls.Ribbon" />

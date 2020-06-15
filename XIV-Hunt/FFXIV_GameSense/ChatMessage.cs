@@ -10,17 +10,11 @@ using XIVDB;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000027 RID: 39
 	internal class ChatMessage
 	{
-		// Token: 0x17000049 RID: 73
-		// (get) Token: 0x06000137 RID: 311 RVA: 0x000057BE File Offset: 0x000039BE
-		// (set) Token: 0x06000138 RID: 312 RVA: 0x000057C6 File Offset: 0x000039C6
 		[JsonIgnore]
 		internal DateTime Timestamp { get; set; }
 
-		// Token: 0x1700004A RID: 74
-		// (get) Token: 0x06000139 RID: 313 RVA: 0x000057CF File Offset: 0x000039CF
 		[JsonProperty]
 		private uint Epoch
 		{
@@ -30,32 +24,17 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x1700004B RID: 75
-		// (get) Token: 0x0600013A RID: 314 RVA: 0x000057DC File Offset: 0x000039DC
-		// (set) Token: 0x0600013B RID: 315 RVA: 0x000057E4 File Offset: 0x000039E4
 		[JsonProperty]
 		internal ChatChannel Channel { get; set; }
 
-		// Token: 0x1700004C RID: 76
-		// (get) Token: 0x0600013C RID: 316 RVA: 0x000057ED File Offset: 0x000039ED
-		// (set) Token: 0x0600013D RID: 317 RVA: 0x000057F5 File Offset: 0x000039F5
 		internal ChatFilter Filter { get; set; }
 
-		// Token: 0x1700004D RID: 77
-		// (get) Token: 0x0600013E RID: 318 RVA: 0x000057FE File Offset: 0x000039FE
-		// (set) Token: 0x0600013F RID: 319 RVA: 0x00005806 File Offset: 0x00003A06
 		[JsonProperty]
 		internal Sender Sender { get; set; }
 
-		// Token: 0x1700004E RID: 78
-		// (get) Token: 0x06000140 RID: 320 RVA: 0x0000580F File Offset: 0x00003A0F
-		// (set) Token: 0x06000141 RID: 321 RVA: 0x00005817 File Offset: 0x00003A17
 		[JsonProperty]
 		public byte[] Message { get; private set; }
 
-		// Token: 0x1700004F RID: 79
-		// (get) Token: 0x06000142 RID: 322 RVA: 0x00005820 File Offset: 0x00003A20
-		// (set) Token: 0x06000143 RID: 323 RVA: 0x00005832 File Offset: 0x00003A32
 		[JsonIgnore]
 		internal string MessageString
 		{
@@ -69,7 +48,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000144 RID: 324 RVA: 0x00005845 File Offset: 0x00003A45
 		internal ChatMessage()
 		{
 			this.Timestamp = DateTime.UtcNow;
@@ -78,7 +56,6 @@ namespace FFXIV_GameSense
 			this.Message = null;
 		}
 
-		// Token: 0x06000145 RID: 325 RVA: 0x00005876 File Offset: 0x00003A76
 		internal ChatMessage(string message)
 		{
 			this.Timestamp = DateTime.UtcNow;
@@ -87,13 +64,11 @@ namespace FFXIV_GameSense
 			this.Message = Encoding.UTF8.GetBytes(message);
 		}
 
-		// Token: 0x06000146 RID: 326 RVA: 0x000058B1 File Offset: 0x00003AB1
 		internal void PostpendToMessage(string postpend)
 		{
 			this.Message = this.Message.Concat(Encoding.UTF8.GetBytes(postpend)).ToArray<byte>();
 		}
 
-		// Token: 0x06000147 RID: 327 RVA: 0x000058D4 File Offset: 0x00003AD4
 		internal ChatMessage(byte[] arr)
 		{
 			if (arr.Length < 10)
@@ -108,13 +83,11 @@ namespace FFXIV_GameSense
 			this.Message = arr.Skip(9 + msgStart).ToArray<byte>();
 		}
 
-		// Token: 0x06000148 RID: 328 RVA: 0x00005948 File Offset: 0x00003B48
 		private static DateTime UnixTimeStampToDateTime(uint unixTimeStamp)
 		{
 			return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(unixTimeStamp);
 		}
 
-		// Token: 0x06000149 RID: 329 RVA: 0x00005974 File Offset: 0x00003B74
 		internal byte[] ToArray(bool onlyMessage = false)
 		{
 			List<byte> a = new List<byte>();
@@ -138,7 +111,6 @@ namespace FFXIV_GameSense
 			return a.ToArray();
 		}
 
-		// Token: 0x0600014A RID: 330 RVA: 0x00005A28 File Offset: 0x00003C28
 		internal static byte[] ReplaceTags(byte[] msg)
 		{
 			foreach (KeyValuePair<string, byte[]> kvp in ChatMessage.Tags)
@@ -148,7 +120,6 @@ namespace FFXIV_GameSense
 			return msg;
 		}
 
-		// Token: 0x0600014B RID: 331 RVA: 0x00005A94 File Offset: 0x00003C94
 		internal static ChatMessage MakeItemChatMessage(Item Item, string prepend = "", string postpend = "", bool HQ = false)
 		{
 			ChatMessage cm = new ChatMessage();
@@ -260,7 +231,6 @@ namespace FFXIV_GameSense
 			return cm;
 		}
 
-		// Token: 0x0600014C RID: 332 RVA: 0x00005D40 File Offset: 0x00003F40
 		internal static ChatMessage MakePosChatMessage(string prepend, ushort zoneId, float x, float y, string postpend = "", ushort mapId = 0)
 		{
 			ChatMessage cm = new ChatMessage();
@@ -353,7 +323,6 @@ namespace FFXIV_GameSense
 			return cm;
 		}
 
-		// Token: 0x0600014D RID: 333 RVA: 0x00005FA4 File Offset: 0x000041A4
 		private static byte[] CoordToFlagPosCoord(float coordinate)
 		{
 			coordinate *= 1000f;
@@ -409,11 +378,9 @@ namespace FFXIV_GameSense
 			return t;
 		}
 
-		// Token: 0x0400008E RID: 142
 		[JsonIgnore]
 		private const string possep = "<pos>";
 
-		// Token: 0x0400008F RID: 143
 		[JsonIgnore]
 		private static readonly Dictionary<string, byte[]> Tags = new Dictionary<string, byte[]>
 		{
@@ -471,7 +438,6 @@ namespace FFXIV_GameSense
 			}
 		};
 
-		// Token: 0x04000090 RID: 144
 		[JsonIgnore]
 		private static readonly byte[] arrow = new byte[]
 		{
@@ -485,7 +451,6 @@ namespace FFXIV_GameSense
 			3
 		};
 
-		// Token: 0x04000091 RID: 145
 		[JsonIgnore]
 		private static readonly byte[] HQChar = new byte[]
 		{
@@ -494,7 +459,6 @@ namespace FFXIV_GameSense
 			188
 		};
 
-		// Token: 0x04000092 RID: 146
 		[JsonIgnore]
 		private static readonly Dictionary<int, byte[]> RarityColors = new Dictionary<int, byte[]>
 		{

@@ -6,15 +6,10 @@ using NAudio.Wave;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x020000A2 RID: 162
 	internal static class SoundPlayer
 	{
-		// Token: 0x170000D7 RID: 215
-		// (get) Token: 0x0600042D RID: 1069 RVA: 0x00013DF3 File Offset: 0x00011FF3
-		// (set) Token: 0x0600042E RID: 1070 RVA: 0x00013DFA File Offset: 0x00011FFA
 		internal static AudioFileReader AudioFileReader { get; private set; }
 
-		// Token: 0x0600042F RID: 1071 RVA: 0x00013E04 File Offset: 0x00012004
 		public static async Task Play(AudioFileReader reader)
 		{
 			using (WasapiOut WasapiOutDevice = new WasapiOut(SoundPlayer.FindSelectedDevice(), AudioClientShareMode.Shared, true, 50))
@@ -31,7 +26,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000430 RID: 1072 RVA: 0x00013E4C File Offset: 0x0001204C
 		private static MMDevice FindSelectedDevice()
 		{
 			MMDevice defaultAudioEndpoint;

@@ -17,16 +17,10 @@ using XIVDB;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000052 RID: 82
 	public class FFXIVMemory : IDisposable
 	{
-		// Token: 0x1700007A RID: 122
-		// (get) Token: 0x06000243 RID: 579 RVA: 0x0000B9AD File Offset: 0x00009BAD
-		// (set) Token: 0x06000244 RID: 580 RVA: 0x0000B9B5 File Offset: 0x00009BB5
 		internal List<Entity> Combatants { get; private set; }
 
-		// Token: 0x1700007B RID: 123
-		// (get) Token: 0x06000245 RID: 581 RVA: 0x0000B9BE File Offset: 0x00009BBE
 		private object CombatantsLock
 		{
 			get
@@ -35,15 +29,10 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x06000246 RID: 582 RVA: 0x0000B9C8 File Offset: 0x00009BC8
-		// (remove) Token: 0x06000247 RID: 583 RVA: 0x0000BA00 File Offset: 0x00009C00
 		internal event EventHandler<CommandEventArgs> OnNewCommand = delegate(object <p0>, CommandEventArgs <p1>)
 		{
 		};
 
-		// Token: 0x1700007C RID: 124
-		// (get) Token: 0x06000248 RID: 584 RVA: 0x0000BA35 File Offset: 0x00009C35
 		private bool Is64Bit
 		{
 			get
@@ -52,7 +41,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000249 RID: 585 RVA: 0x0000BA40 File Offset: 0x00009C40
 		internal byte GetZoneInstance()
 		{
 			if (this.region != GameRegion.Global)
@@ -62,7 +50,6 @@ namespace FFXIV_GameSense
 			return 0;
 		}
 
-		// Token: 0x0600024A RID: 586 RVA: 0x0000BA5C File Offset: 0x00009C5C
 		public FFXIVMemory(Process process)
 		{
 			int[] array = new int[3];
@@ -137,14 +124,12 @@ namespace FFXIV_GameSense
 			this._thread.Start();
 		}
 
-		// Token: 0x0600024B RID: 587 RVA: 0x0000BC86 File Offset: 0x00009E86
 		public void Dispose()
 		{
 			this.Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x0600024C RID: 588 RVA: 0x0000BC95 File Offset: 0x00009E95
 		protected virtual void Dispose(bool disposing)
 		{
 			if (disposing)
@@ -164,7 +149,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600024D RID: 589 RVA: 0x0000BCD8 File Offset: 0x00009ED8
 		private void ScanMemoryLoop()
 		{
 			int interval = 50;
@@ -193,7 +177,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600024E RID: 590 RVA: 0x0000BD38 File Offset: 0x00009F38
 		private void ScanFailedCommand()
 		{
 			string cmd = this.GetLastFailedCommand();
@@ -210,7 +193,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600024F RID: 591 RVA: 0x0000BDB8 File Offset: 0x00009FB8
 		private void ScanCombatants()
 		{
 			List<Entity> c = this.GetCombatantList();
@@ -221,17 +203,13 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x1700007D RID: 125
-		// (get) Token: 0x06000250 RID: 592 RVA: 0x0000BE00 File Offset: 0x0000A000
 		public Process Process { get; }
 
-		// Token: 0x06000251 RID: 593 RVA: 0x0000BE08 File Offset: 0x0000A008
 		public bool ValidateProcess()
 		{
 			return this.Process != null && !this.Process.HasExited && ((!(this.charmapAddress == IntPtr.Zero) && !(this.targetAddress == IntPtr.Zero) && !(this.homeWorldIdAddress == IntPtr.Zero) && this.IsValidServerId()) || this.GetPointerAddress());
 		}
 
-		// Token: 0x06000252 RID: 594 RVA: 0x0000BE74 File Offset: 0x0000A074
 		private bool GetPointerAddress()
 		{
 			List<string> fail = new List<string>();
@@ -448,7 +426,6 @@ namespace FFXIV_GameSense
 			return !fail.Any<string>();
 		}
 
-		// Token: 0x06000253 RID: 595 RVA: 0x0000C4EC File Offset: 0x0000A6EC
 		private void WipeLastFailedCommand(byte len = 62)
 		{
 			if (len > 62)
@@ -460,19 +437,16 @@ namespace FFXIV_GameSense
 			NativeMethods.WriteProcessMemory(this.Process.Handle, new IntPtr((long)this.GetUInt64(this.lastFailedCommandAddress, 0)), arr, new IntPtr(arr.Length), out num);
 		}
 
-		// Token: 0x06000254 RID: 596 RVA: 0x0000C537 File Offset: 0x0000A737
 		private string GetLastFailedCommand()
 		{
 			return FFXIVMemory.GetStringFromBytes(this.GetByteArray(new IntPtr((long)this.GetUInt64(this.lastFailedCommandAddress, 0)), 70u), 0, 70);
 		}
 
-		// Token: 0x06000255 RID: 597 RVA: 0x0000C55B File Offset: 0x0000A75B
 		internal ushort GetCurrentContentFinderCondition()
 		{
 			return this.GetUInt16(this.currentContentFinderConditionAddress, 0);
 		}
 
-		// Token: 0x06000256 RID: 598 RVA: 0x0000C56C File Offset: 0x0000A76C
 		internal ContentFinder GetContentFinder()
 		{
 			byte[] ba = this.GetByteArray(this.contentFinderConditionAddress, 256u);
@@ -484,7 +458,6 @@ namespace FFXIV_GameSense
 			};
 		}
 
-		// Token: 0x06000257 RID: 599 RVA: 0x0000C5E0 File Offset: 0x0000A7E0
 		internal List<ChatMessage> ReadChatLogBackwards(ushort count = 1000, Predicate<ChatMessage> filter = null, Predicate<ChatMessage> stopOn = null)
 		{
 			List<ChatMessage> ChatLog = new List<ChatMessage>();
@@ -515,7 +488,6 @@ namespace FFXIV_GameSense
 			return ChatLog;
 		}
 
-		// Token: 0x06000258 RID: 600 RVA: 0x0000C694 File Offset: 0x0000A894
 		private async Task TryInject()
 		{
 			string pathToDLLFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Hunt_x64.dll");
@@ -565,7 +537,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000259 RID: 601 RVA: 0x0000C6DC File Offset: 0x0000A8DC
 		private static async Task WaitForNamedPipeServerConnection()
 		{
 			int w = 0;
@@ -584,7 +555,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600025A RID: 602 RVA: 0x0000C71C File Offset: 0x0000A91C
 		internal async Task WriteChatMessage(ChatMessage cm)
 		{
 			await this.TryInject().ConfigureAwait(false);
@@ -593,7 +563,6 @@ namespace FFXIV_GameSense
 			PersistentNamedPipeServer.SendPipeMessage(pipeMessage);
 		}
 
-		// Token: 0x0600025B RID: 603 RVA: 0x0000C76C File Offset: 0x0000A96C
 		private IntPtr ResolvePointerPath(IntPtr address, IEnumerable<int> offsets)
 		{
 			ulong bytes = this.GetUInt64(address, 0);
@@ -605,14 +574,12 @@ namespace FFXIV_GameSense
 			return address;
 		}
 
-		// Token: 0x0600025C RID: 604 RVA: 0x0000C7D0 File Offset: 0x0000A9D0
 		internal DateTime GetServerUtcTime()
 		{
 			byte[] ba = this.GetByteArray(this.serverTimeAddress, 6u);
 			return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(BitConverter.ToUInt32(ba, 0)).AddMilliseconds((double)BitConverter.ToUInt16(ba, 4));
 		}
 
-		// Token: 0x0600025D RID: 605 RVA: 0x0000C81C File Offset: 0x0000AA1C
 		public unsafe Entity GetTargetCombatant()
 		{
 			byte[] source = this.GetByteArray(this.targetAddress, 128u);
@@ -636,7 +603,6 @@ namespace FFXIV_GameSense
 			return this.GetEntityFromByteArray(source);
 		}
 
-		// Token: 0x0600025E RID: 606 RVA: 0x0000C880 File Offset: 0x0000AA80
 		public PC GetSelfCombatant()
 		{
 			PC self = null;
@@ -649,7 +615,6 @@ namespace FFXIV_GameSense
 			return self;
 		}
 
-		// Token: 0x0600025F RID: 607 RVA: 0x0000C8C8 File Offset: 0x0000AAC8
 		private unsafe ulong GetUInt64(IntPtr address, int offset = 0)
 		{
 			byte[] value = new byte[8];
@@ -662,7 +627,6 @@ namespace FFXIV_GameSense
 			return result;
 		}
 
-		// Token: 0x06000260 RID: 608 RVA: 0x0000C8FC File Offset: 0x0000AAFC
 		private bool IsValidServerId()
 		{
 			if (!new ushort[]
@@ -677,19 +641,16 @@ namespace FFXIV_GameSense
 			return true;
 		}
 
-		// Token: 0x06000261 RID: 609 RVA: 0x0000C959 File Offset: 0x0000AB59
 		internal ushort GetCurrentWorldId()
 		{
 			return this.GetUInt16(this.currentWorldIdAddress, 0);
 		}
 
-		// Token: 0x06000262 RID: 610 RVA: 0x0000C968 File Offset: 0x0000AB68
 		internal ushort GetHomeWorldId()
 		{
 			return this.GetUInt16(this.homeWorldIdAddress, 0);
 		}
 
-		// Token: 0x06000263 RID: 611 RVA: 0x0000C978 File Offset: 0x0000AB78
 		internal List<FATE> GetFateList()
 		{
 			IntPtr liststart = this.ResolvePointerPath(this.fateListAddress, this.fateListOffset);
@@ -725,7 +686,6 @@ namespace FFXIV_GameSense
 			return fates;
 		}
 
-		// Token: 0x06000264 RID: 612 RVA: 0x0000CA6C File Offset: 0x0000AC6C
 		private FATE GetFateFromByteArray(byte[] ba)
 		{
 			int offset = (this.region == GameRegion.Global) ? 1056 : 1024;
@@ -749,7 +709,6 @@ namespace FFXIV_GameSense
 			return f;
 		}
 
-		// Token: 0x06000265 RID: 613 RVA: 0x0000CB90 File Offset: 0x0000AD90
 		internal unsafe List<Entity> GetCombatantList()
 		{
 			uint num = 344u;
@@ -790,7 +749,6 @@ namespace FFXIV_GameSense
 			return result;
 		}
 
-		// Token: 0x06000266 RID: 614 RVA: 0x0000CCF4 File Offset: 0x0000AEF4
 		internal unsafe Entity GetEntityFromByteArray(byte[] source)
 		{
 			Entity entity;
@@ -869,7 +827,6 @@ namespace FFXIV_GameSense
 			return entity;
 		}
 
-		// Token: 0x06000267 RID: 615 RVA: 0x0000D094 File Offset: 0x0000B294
 		internal async Task PlayPerformance(Performance p, CancellationToken performCancelationToken)
 		{
 			if (!PersistentNamedPipeServer.Instance.IsConnected)
@@ -879,7 +836,6 @@ namespace FFXIV_GameSense
 			await p.Play(this.Process.Id, performCancelationToken).ConfigureAwait(false);
 		}
 
-		// Token: 0x06000268 RID: 616 RVA: 0x0000D0EC File Offset: 0x0000B2EC
 		internal async Task PlayMML(ImplementedPlayer p, CancellationToken performCancelationToken)
 		{
 			p.Unmute();
@@ -922,7 +878,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000269 RID: 617 RVA: 0x0000D144 File Offset: 0x0000B344
 		private static string GetStringFromBytes(byte[] source, int offset = 0, int size = 256)
 		{
 			byte[] bytes = new byte[size];
@@ -940,7 +895,6 @@ namespace FFXIV_GameSense
 			return Encoding.UTF8.GetString(bytes);
 		}
 
-		// Token: 0x0600026A RID: 618 RVA: 0x0000D18C File Offset: 0x0000B38C
 		private bool Peek(IntPtr address, byte[] buffer)
 		{
 			IntPtr zero = IntPtr.Zero;
@@ -948,7 +902,6 @@ namespace FFXIV_GameSense
 			return NativeMethods.ReadProcessMemory(this.Process.Handle, address, buffer, nSize, ref zero);
 		}
 
-		// Token: 0x0600026B RID: 619 RVA: 0x0000D1C0 File Offset: 0x0000B3C0
 		public byte[] GetByteArray(IntPtr address, uint length)
 		{
 			byte[] data = new byte[length];
@@ -956,7 +909,6 @@ namespace FFXIV_GameSense
 			return data;
 		}
 
-		// Token: 0x0600026C RID: 620 RVA: 0x0000D1E0 File Offset: 0x0000B3E0
 		private unsafe int GetInt32(IntPtr address, int offset = 0)
 		{
 			byte[] value = new byte[4];
@@ -969,7 +921,6 @@ namespace FFXIV_GameSense
 			return result;
 		}
 
-		// Token: 0x0600026D RID: 621 RVA: 0x0000D214 File Offset: 0x0000B414
 		private unsafe uint GetUInt32(IntPtr address, int offset = 0)
 		{
 			byte[] value = new byte[4];
@@ -982,7 +933,6 @@ namespace FFXIV_GameSense
 			return result;
 		}
 
-		// Token: 0x0600026E RID: 622 RVA: 0x0000D248 File Offset: 0x0000B448
 		private unsafe ushort GetUInt16(IntPtr address, int offset = 0)
 		{
 			byte[] value = new byte[2];
@@ -995,7 +945,6 @@ namespace FFXIV_GameSense
 			return result;
 		}
 
-		// Token: 0x0600026F RID: 623 RVA: 0x0000D27C File Offset: 0x0000B47C
 		private List<IntPtr> SigScan(string pattern, int offset = 0, bool bRIP = false, bool noFollow = false)
 		{
 			if (pattern == null || pattern.Length % 2 != 0)
@@ -1082,25 +1031,20 @@ namespace FFXIV_GameSense
 			return list;
 		}
 
-		// Token: 0x06000270 RID: 624 RVA: 0x0000D4E4 File Offset: 0x0000B6E4
 		public ushort GetZoneId()
 		{
 			return this.GetUInt16(this.zoneIdAddress, 0);
 		}
 
-		// Token: 0x06000271 RID: 625 RVA: 0x0000D4F3 File Offset: 0x0000B6F3
 		public ushort GetMapId()
 		{
 			return this.GetUInt16(this.mapIdAddress, 0);
 		}
 
-		// Token: 0x0400018C RID: 396
 		private readonly Thread _thread;
 
-		// Token: 0x0400018D RID: 397
 		private readonly CancellationTokenSource cts;
 
-		// Token: 0x04000190 RID: 400
 		private static readonly Dictionary<byte, Type> ObjectTypeMap = new Dictionary<byte, Type>
 		{
 			{
@@ -1165,55 +1109,38 @@ namespace FFXIV_GameSense
 			}
 		};
 
-		// Token: 0x04000191 RID: 401
 		private const string charmapSignature = "488b42**48c1e8**3d********77**8bc0488d0d";
 
-		// Token: 0x04000192 RID: 402
 		private const string targetSignature = "5fc3483935********75**483935";
 
-		// Token: 0x04000193 RID: 403
 		private const string zoneIdSignature = "e8********f30f108d********4c8d85********0fb705";
 
-		// Token: 0x04000194 RID: 404
 		private const string mapIdSignature = "74**488b42**488905********48890d";
 
-		// Token: 0x04000195 RID: 405
 		private const string serverTimeSignature = "488b10488bc8ff52**488bf8488b0d";
 
-		// Token: 0x04000196 RID: 406
 		private const string chatLogStartSignature = "e8********85c0740e488b0d********33D2E8********488b0d";
 
-		// Token: 0x04000197 RID: 407
 		private const string fateListSignature = "be********488bcbe8********4881c3********4883ee**75**488b05";
 
-		// Token: 0x04000198 RID: 408
 		private const string contentFinderConditionSignature = "440fb643**488d51**488d0d";
 
-		// Token: 0x04000199 RID: 409
 		private const string homeWorldIdSignature = "e8********488bbc24********488b7424**488b0d";
 
-		// Token: 0x0400019A RID: 410
 		private const string currentWorldIdSignature = "48c741**********48890d";
 
-		// Token: 0x0400019B RID: 411
 		private const string lastFailedCommandSignature = "0f84********488b07488bcfff50**488bc8e8********488bc84c8d05";
 
-		// Token: 0x0400019C RID: 412
 		private string currentContentFinderConditionSignature = "48899f********48899f********48899f********48899f********899f********0fb71d";
 
-		// Token: 0x0400019D RID: 413
 		private const string instanceSignature = "33ff44897c24**488b0d";
 
-		// Token: 0x0400019E RID: 414
 		private const int contentFinderConditionOffset = 244;
 
-		// Token: 0x0400019F RID: 415
 		private int currentContentFinderConditionOffset;
 
-		// Token: 0x040001A0 RID: 416
 		private const int instanceOffset = 1580;
 
-		// Token: 0x040001A1 RID: 417
 		private readonly int[] serverTimeOffset = new int[]
 		{
 			5384,
@@ -1221,86 +1148,58 @@ namespace FFXIV_GameSense
 			2124
 		};
 
-		// Token: 0x040001A2 RID: 418
 		private readonly int[] chatLogStartOffset;
 
-		// Token: 0x040001A3 RID: 419
 		private readonly int[] chatLogTailOffset;
 
-		// Token: 0x040001A4 RID: 420
 		private readonly int[] homeWorldIdOffset;
 
-		// Token: 0x040001A5 RID: 421
 		private readonly int[] currentWorldIdOffset;
 
-		// Token: 0x040001A6 RID: 422
 		private readonly int[] fateListOffset;
 
-		// Token: 0x040001A7 RID: 423
 		private int[] mapIdOffset;
 
-		// Token: 0x040001A8 RID: 424
 		private readonly FFXIVMemory.FFXIVClientMode _mode;
 
-		// Token: 0x040001A9 RID: 425
 		private GameRegion region;
 
-		// Token: 0x040001AA RID: 426
 		private CombatantOffsets combatantOffsets;
 
-		// Token: 0x040001AB RID: 427
 		private ContentFinderOffsets contentFinderOffsets;
 
-		// Token: 0x040001AC RID: 428
 		private IntPtr charmapAddress;
 
-		// Token: 0x040001AD RID: 429
 		private IntPtr targetAddress;
 
-		// Token: 0x040001AE RID: 430
 		private IntPtr fateListAddress;
 
-		// Token: 0x040001AF RID: 431
 		private IntPtr zoneIdAddress;
 
-		// Token: 0x040001B0 RID: 432
 		private IntPtr mapIdAddress;
 
-		// Token: 0x040001B1 RID: 433
 		private IntPtr serverTimeAddress;
 
-		// Token: 0x040001B2 RID: 434
 		private IntPtr chatLogStartAddress;
 
-		// Token: 0x040001B3 RID: 435
 		private IntPtr chatLogTailAddress;
 
-		// Token: 0x040001B4 RID: 436
 		private IntPtr homeWorldIdAddress;
 
-		// Token: 0x040001B5 RID: 437
 		private IntPtr currentWorldIdAddress;
 
-		// Token: 0x040001B6 RID: 438
 		private IntPtr contentFinderConditionAddress;
 
-		// Token: 0x040001B7 RID: 439
 		private IntPtr currentContentFinderConditionAddress;
 
-		// Token: 0x040001B8 RID: 440
 		private IntPtr lastFailedCommandAddress;
 
-		// Token: 0x040001B9 RID: 441
 		private IntPtr instanceAddress;
 
-		// Token: 0x02000053 RID: 83
 		public enum FFXIVClientMode
 		{
-			// Token: 0x040001BC RID: 444
 			Unknown,
-			// Token: 0x040001BD RID: 445
 			FFXIV32,
-			// Token: 0x040001BE RID: 446
 			FFXIV64
 		}
 	}

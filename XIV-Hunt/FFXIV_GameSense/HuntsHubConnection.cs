@@ -17,20 +17,12 @@ using Splat;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x0200007C RID: 124
 	internal class HuntsHubConnection
 	{
-		// Token: 0x170000CD RID: 205
-		// (get) Token: 0x06000355 RID: 853 RVA: 0x0000EDAA File Offset: 0x0000CFAA
-		// (set) Token: 0x06000356 RID: 854 RVA: 0x0000EDB2 File Offset: 0x0000CFB2
 		public HubConnection Connection { get; private set; }
 
-		// Token: 0x170000CE RID: 206
-		// (get) Token: 0x06000357 RID: 855 RVA: 0x0000EDBB File Offset: 0x0000CFBB
-		// (set) Token: 0x06000358 RID: 856 RVA: 0x0000EDC3 File Offset: 0x0000CFC3
 		public bool Connected { get; private set; }
 
-		// Token: 0x06000359 RID: 857 RVA: 0x0000EDCC File Offset: 0x0000CFCC
 		public HuntsHubConnection()
 		{
 			this.Connection = new HubConnectionBuilder().WithUrl("https://xivhunt.net/SignalR/HuntsHub", delegate(HttpConnectionOptions o)
@@ -40,7 +32,6 @@ namespace FFXIV_GameSense
 			this.Connection.Closed += this.Connection_Closed;
 		}
 
-		// Token: 0x0600035A RID: 858 RVA: 0x0000EE34 File Offset: 0x0000D034
 		private Task Connection_Closed(Exception arg)
 		{
 			LogHost.Default.InfoException("HuntsHubConnection closed due to: ", arg);
@@ -48,7 +39,6 @@ namespace FFXIV_GameSense
 			return Task.CompletedTask;
 		}
 
-		// Token: 0x0600035B RID: 859 RVA: 0x0000EE54 File Offset: 0x0000D054
 		internal async Task<bool> Connect(Window1 w1)
 		{
 			HuntsHubConnection.<>c__DisplayClass12_0 CS$<>8__locals1 = new HuntsHubConnection.<>c__DisplayClass12_0();
@@ -127,7 +117,6 @@ namespace FFXIV_GameSense
 			return result;
 		}
 
-		// Token: 0x0600035C RID: 860 RVA: 0x0000EEA4 File Offset: 0x0000D0A4
 		internal static CookieContainer Login(ushort sid)
 		{
 			CookieContainer cc = null;
@@ -153,7 +142,6 @@ namespace FFXIV_GameSense
 			return cc;
 		}
 
-		// Token: 0x0600035D RID: 861 RVA: 0x0000EF28 File Offset: 0x0000D128
 		private static bool TestCC(CookieContainer cc)
 		{
 			if (cc == null)
@@ -189,7 +177,6 @@ namespace FFXIV_GameSense
 			return result;
 		}
 
-		// Token: 0x0600035E RID: 862 RVA: 0x0000F01C File Offset: 0x0000D21C
 		private static object ByteArrayToObject(byte[] arrBytes)
 		{
 			object result;
@@ -203,10 +190,8 @@ namespace FFXIV_GameSense
 			return result;
 		}
 
-		// Token: 0x0400027E RID: 638
 		private const string HuntsHubEndpoint = "SignalR/HuntsHub";
 
-		// Token: 0x0400027F RID: 639
 		private bool IsConnecting;
 	}
 }

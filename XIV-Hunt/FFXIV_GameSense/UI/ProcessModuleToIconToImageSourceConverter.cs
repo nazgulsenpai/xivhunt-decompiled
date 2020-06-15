@@ -11,10 +11,8 @@ using Splat;
 
 namespace FFXIV_GameSense.UI
 {
-	// Token: 0x020000AB RID: 171
 	internal class ProcessModuleToIconToImageSourceConverter : IValueConverter
 	{
-		// Token: 0x06000463 RID: 1123 RVA: 0x00014814 File Offset: 0x00012A14
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			if (value is ProcessModule && File.Exists((value as ProcessModule).FileName))
@@ -31,7 +29,6 @@ namespace FFXIV_GameSense.UI
 			return null;
 		}
 
-		// Token: 0x06000464 RID: 1124 RVA: 0x00014521 File Offset: 0x00012721
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			throw new NotImplementedException();

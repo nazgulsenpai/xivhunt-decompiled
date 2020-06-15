@@ -27,10 +27,8 @@ using XIVDB;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000082 RID: 130
 	public class Window1 : Window, IDisposable, IComponentConnector
 	{
-		// Token: 0x0600036B RID: 875 RVA: 0x0000F61C File Offset: 0x0000D81C
 		public Window1()
 		{
 			Thread.CurrentThread.CurrentCulture = new CultureInfo(Settings.Default.LanguageCI);
@@ -81,14 +79,12 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600036C RID: 876 RVA: 0x0000F7D4 File Offset: 0x0000D9D4
 		protected override void OnStateChanged(EventArgs e)
 		{
 			this.HideWindowAndShowTrayIcon();
 			base.OnStateChanged(e);
 		}
 
-		// Token: 0x0600036D RID: 877 RVA: 0x0000F7E3 File Offset: 0x0000D9E3
 		private void HideWindowAndShowTrayIcon()
 		{
 			if (base.WindowState == WindowState.Minimized && Settings.Default.MinimizeToTray)
@@ -99,7 +95,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600036E RID: 878 RVA: 0x0000F814 File Offset: 0x0000DA14
 		private void CheckSoundStartup()
 		{
 			string[] slist = new string[]
@@ -150,7 +145,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600036F RID: 879 RVA: 0x0000F94C File Offset: 0x0000DB4C
 		private void DispatcherTimer1s_Tick(object sender, EventArgs e)
 		{
 			if (this.ProcessComboBox.SelectedIndex < 0)
@@ -203,7 +197,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000370 RID: 880 RVA: 0x0000FAE8 File Offset: 0x0000DCE8
 		private bool AnyProblems()
 		{
 			if (Program.mem != null && Program.mem.ValidateProcess() && Program.mem.GetSelfCombatant() != null)
@@ -247,7 +240,6 @@ namespace FFXIV_GameSense
 			return true;
 		}
 
-		// Token: 0x06000371 RID: 881 RVA: 0x0000FC7C File Offset: 0x0000DE7C
 		internal void ProcessChatCommand(object sender, CommandEventArgs e)
 		{
 			Window1.<>c__DisplayClass16_0 CS$<>8__locals1 = new Window1.<>c__DisplayClass16_0();
@@ -425,7 +417,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000372 RID: 882 RVA: 0x00010288 File Offset: 0x0000E488
 		private void HuntAndCFCheck()
 		{
 			if (this.hunts != null)
@@ -448,7 +439,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000373 RID: 883 RVA: 0x00010333 File Offset: 0x0000E533
 		private void StopPerformance()
 		{
 			if (this.cts != null && !this.cts.IsCancellationRequested)
@@ -458,7 +448,6 @@ namespace FFXIV_GameSense
 			this.cts = new CancellationTokenSource();
 		}
 
-		// Token: 0x06000374 RID: 884 RVA: 0x00010360 File Offset: 0x0000E560
 		private void TryMML(string pathname)
 		{
 			ImplementedPlayer mml = new ImplementedPlayer();
@@ -472,7 +461,6 @@ namespace FFXIV_GameSense
 			Program.mem.PlayMML(mml, this.cts.Token);
 		}
 
-		// Token: 0x06000375 RID: 885 RVA: 0x000103C2 File Offset: 0x0000E5C2
 		private void MenuForm_FormClosed(object sender, EventArgs e)
 		{
 			this.OverlayView.Dispose();
@@ -480,14 +468,12 @@ namespace FFXIV_GameSense
 			Environment.Exit(0);
 		}
 
-		// Token: 0x06000376 RID: 886 RVA: 0x000103DB File Offset: 0x0000E5DB
 		public void Dispose()
 		{
 			this.Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x06000377 RID: 887 RVA: 0x000103EC File Offset: 0x0000E5EC
 		protected virtual void Dispose(bool disposing)
 		{
 			if (disposing)
@@ -529,7 +515,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000378 RID: 888 RVA: 0x000104FC File Offset: 0x0000E6FC
 		private void CheckBox_Checked(object sender, RoutedEventArgs e)
 		{
 			Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog
@@ -555,7 +540,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000379 RID: 889 RVA: 0x00010588 File Offset: 0x0000E788
 		private bool SetAlarmSound(AlarmButton r, string soundFile)
 		{
 			r.ToolTip = Path.GetFileName(soundFile);
@@ -591,7 +575,6 @@ namespace FFXIV_GameSense
 			return false;
 		}
 
-		// Token: 0x0600037A RID: 890 RVA: 0x00010668 File Offset: 0x0000E868
 		private void UnsetAlarmSound(AlarmButton r)
 		{
 			r.ToolTip = FFXIV_GameSense.Properties.Resources.NoSoundAlert;
@@ -651,7 +634,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600037B RID: 891 RVA: 0x0001079C File Offset: 0x0000E99C
 		private void SBell_Click(object sender, RoutedEventArgs e)
 		{
 			if (this.currentCMPlacement != null)
@@ -731,7 +713,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600037C RID: 892 RVA: 0x00010A3B File Offset: 0x0000EC3B
 		private void Cm_Closed(object sender, RoutedEventArgs e)
 		{
 			if (this.currentCMPlacement != null)
@@ -741,7 +722,6 @@ namespace FFXIV_GameSense
 			this.currentCMPlacement = null;
 		}
 
-		// Token: 0x0600037D RID: 893 RVA: 0x00010A58 File Offset: 0x0000EC58
 		private void MenuItemSoundSelected(object sender, RoutedEventArgs e)
 		{
 			AlarmButton cb = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as AlarmButton;
@@ -749,14 +729,12 @@ namespace FFXIV_GameSense
 			this.currentCMPlacement = null;
 		}
 
-		// Token: 0x0600037E RID: 894 RVA: 0x00010AA0 File Offset: 0x0000ECA0
 		private void MenuItemClickCallCheckBox(object sender, RoutedEventArgs e)
 		{
 			AlarmButton cb = ((sender as MenuItem).Parent as ContextMenu).PlacementTarget as AlarmButton;
 			this.CheckBox_Checked(cb, new RoutedEventArgs());
 		}
 
-		// Token: 0x0600037F RID: 895 RVA: 0x00010AD4 File Offset: 0x0000ECD4
 		private void SCheck_Checked(object sender, RoutedEventArgs e)
 		{
 			if (!Settings.Default.SARR && !Settings.Default.SHW && !Settings.Default.SSB && !Settings.Default.SSHB)
@@ -765,7 +743,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000380 RID: 896 RVA: 0x00010B44 File Offset: 0x0000ED44
 		private void ACheck_Checked(object sender, RoutedEventArgs e)
 		{
 			if (!Settings.Default.AARR && !Settings.Default.AHW && !Settings.Default.ASB && !Settings.Default.ASHB)
@@ -774,7 +751,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000381 RID: 897 RVA: 0x00010BB4 File Offset: 0x0000EDB4
 		private void BCheck_Checked(object sender, RoutedEventArgs e)
 		{
 			if (!Settings.Default.BARR && !Settings.Default.BHW && !Settings.Default.BSB && !Settings.Default.BSHB)
@@ -783,31 +759,26 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000382 RID: 898 RVA: 0x00010C23 File Offset: 0x0000EE23
 		private void SCheck_Unchecked(object sender, RoutedEventArgs e)
 		{
 			this.UnsetAlarmSound(this.SBell);
 		}
 
-		// Token: 0x06000383 RID: 899 RVA: 0x00010C31 File Offset: 0x0000EE31
 		private void ACheck_Unchecked(object sender, RoutedEventArgs e)
 		{
 			this.UnsetAlarmSound(this.ABell);
 		}
 
-		// Token: 0x06000384 RID: 900 RVA: 0x00010C3F File Offset: 0x0000EE3F
 		private void BCheck_Unchecked(object sender, RoutedEventArgs e)
 		{
 			this.UnsetAlarmSound(this.BBell);
 		}
 
-		// Token: 0x06000385 RID: 901 RVA: 0x00010C4D File Offset: 0x0000EE4D
 		private void FilterCheckBoxOpacityUp(object sender, RoutedEventArgs e)
 		{
 			((System.Windows.Controls.CheckBox)sender).Opacity = 1.0;
 		}
 
-		// Token: 0x06000386 RID: 902 RVA: 0x00010C64 File Offset: 0x0000EE64
 		private void FilterCheckBoxOpacityDown(object sender, RoutedEventArgs e)
 		{
 			if (((System.Windows.Controls.CheckBox)sender).Name.StartsWith("S", StringComparison.Ordinal) && (!this.SARR.IsChecked).Value && (!this.SHW.IsChecked).Value && (!this.SSB.IsChecked).Value && (!this.SSHB.IsChecked).Value)
@@ -825,7 +796,6 @@ namespace FFXIV_GameSense
 			((System.Windows.Controls.CheckBox)sender).Opacity = 0.34999999403953552;
 		}
 
-		// Token: 0x06000387 RID: 903 RVA: 0x00010FC2 File Offset: 0x0000F1C2
 		private void UniformGrid_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
 			if (((UniformGrid)sender).IsEnabled)
@@ -836,7 +806,6 @@ namespace FFXIV_GameSense
 			((UniformGrid)sender).Opacity = 0.34999999403953552;
 		}
 
-		// Token: 0x06000388 RID: 904 RVA: 0x00010FFA File Offset: 0x0000F1FA
 		private void OpenSettings(object sender, RoutedEventArgs e)
 		{
 			if (Window1.SettingsWindow != null && Window1.SettingsWindow.IsVisible)
@@ -848,7 +817,6 @@ namespace FFXIV_GameSense
 			Window1.SettingsWindow.Show();
 		}
 
-		// Token: 0x06000389 RID: 905 RVA: 0x0001102F File Offset: 0x0000F22F
 		private void OpenLogViewer(object sender, RoutedEventArgs e)
 		{
 			if (Window1.LogView.IsVisible)
@@ -859,7 +827,6 @@ namespace FFXIV_GameSense
 			Window1.LogView.Show();
 		}
 
-		// Token: 0x0600038A RID: 906 RVA: 0x00011053 File Offset: 0x0000F253
 		private void FATEBell_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
 		{
 			if (sender is AlarmButton && !(bool)e.NewValue && Settings.Default.FATEs.Count == 0)
@@ -868,19 +835,16 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600038B RID: 907 RVA: 0x00011088 File Offset: 0x0000F288
 		private void FATEsListView_AllFATEsDeselected(object sender, EventArgs e)
 		{
 			this.FATEBell.IsEnabled = false;
 		}
 
-		// Token: 0x0600038C RID: 908 RVA: 0x00011096 File Offset: 0x0000F296
 		private void FATEsListView_FATESelected(object sender, EventArgs e)
 		{
 			this.FATEBell.IsEnabled = true;
 		}
 
-		// Token: 0x0600038D RID: 909 RVA: 0x000110A4 File Offset: 0x0000F2A4
 		[DebuggerNonUserCode]
 		[GeneratedCode("PresentationBuildTasks", "4.8.1.0")]
 		public void InitializeComponent()
@@ -894,7 +858,6 @@ namespace FFXIV_GameSense
 			System.Windows.Application.LoadComponent(this, resourceLocater);
 		}
 
-		// Token: 0x0600038E RID: 910 RVA: 0x000110D4 File Offset: 0x0000F2D4
 		[DebuggerNonUserCode]
 		[GeneratedCode("PresentationBuildTasks", "4.8.1.0")]
 		internal Delegate _CreateDelegate(Type delegateType, string handler)
@@ -902,7 +865,6 @@ namespace FFXIV_GameSense
 			return Delegate.CreateDelegate(delegateType, this, handler);
 		}
 
-		// Token: 0x0600038F RID: 911 RVA: 0x000110E0 File Offset: 0x0000F2E0
 		[DebuggerNonUserCode]
 		[GeneratedCode("PresentationBuildTasks", "4.8.1.0")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
@@ -1042,118 +1004,80 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x04000293 RID: 659
 		private readonly DispatcherTimer dispatcherTimer1s;
 
-		// Token: 0x04000294 RID: 660
 		private FFXIVHunts hunts;
 
-		// Token: 0x04000295 RID: 661
 		internal Dictionary<HuntRank, AudioFileReader> sounds = new Dictionary<HuntRank, AudioFileReader>();
 
-		// Token: 0x04000296 RID: 662
 		private AlarmButton currentCMPlacement;
 
-		// Token: 0x04000297 RID: 663
 		private readonly NotifyIcon trayIcon;
 
-		// Token: 0x04000298 RID: 664
 		private ViewModel vm;
 
-		// Token: 0x04000299 RID: 665
 		private static SettingsForm SettingsWindow;
 
-		// Token: 0x0400029A RID: 666
 		private static readonly LogView LogView = new LogView();
 
-		// Token: 0x0400029B RID: 667
 		private CancellationTokenSource cts;
 
-		// Token: 0x0400029C RID: 668
 		private static bool IconIsFlashing = false;
 
-		// Token: 0x0400029D RID: 669
 		internal TextBlock HuntConnectionTextBlock;
 
-		// Token: 0x0400029E RID: 670
 		internal System.Windows.Controls.TabControl MainTabControl;
 
-		// Token: 0x0400029F RID: 671
 		internal System.Windows.Controls.GroupBox HuntNotifyGroupBox;
 
-		// Token: 0x040002A0 RID: 672
 		internal Grid Grid;
 
-		// Token: 0x040002A1 RID: 673
 		internal AlarmButton SBell;
 
-		// Token: 0x040002A2 RID: 674
 		internal AlarmButton ABell;
 
-		// Token: 0x040002A3 RID: 675
 		internal AlarmButton BBell;
 
-		// Token: 0x040002A4 RID: 676
 		internal AlarmButton FATEBell;
 
-		// Token: 0x040002A5 RID: 677
 		internal FATEsListView FATEsListView;
 
-		// Token: 0x040002A6 RID: 678
 		internal System.Windows.Controls.CheckBox SCheck;
 
-		// Token: 0x040002A7 RID: 679
 		internal System.Windows.Controls.CheckBox SARR;
 
-		// Token: 0x040002A8 RID: 680
 		internal System.Windows.Controls.CheckBox SHW;
 
-		// Token: 0x040002A9 RID: 681
 		internal System.Windows.Controls.CheckBox SSB;
 
-		// Token: 0x040002AA RID: 682
 		internal System.Windows.Controls.CheckBox SSHB;
 
-		// Token: 0x040002AB RID: 683
 		internal System.Windows.Controls.CheckBox ACheck;
 
-		// Token: 0x040002AC RID: 684
 		internal System.Windows.Controls.CheckBox AARR;
 
-		// Token: 0x040002AD RID: 685
 		internal System.Windows.Controls.CheckBox AHW;
 
-		// Token: 0x040002AE RID: 686
 		internal System.Windows.Controls.CheckBox ASB;
 
-		// Token: 0x040002AF RID: 687
 		internal System.Windows.Controls.CheckBox ASHB;
 
-		// Token: 0x040002B0 RID: 688
 		internal System.Windows.Controls.CheckBox BCheck;
 
-		// Token: 0x040002B1 RID: 689
 		internal System.Windows.Controls.CheckBox BARR;
 
-		// Token: 0x040002B2 RID: 690
 		internal System.Windows.Controls.CheckBox BHW;
 
-		// Token: 0x040002B3 RID: 691
 		internal System.Windows.Controls.CheckBox BSB;
 
-		// Token: 0x040002B4 RID: 692
 		internal System.Windows.Controls.CheckBox BSHB;
 
-		// Token: 0x040002B5 RID: 693
 		internal OverlayView OverlayView;
 
-		// Token: 0x040002B6 RID: 694
 		internal System.Windows.Controls.ComboBox ProcessComboBox;
 
-		// Token: 0x040002B7 RID: 695
 		internal FFXIV_GameSense.UI.Controls.LanguageSelector LanguageSelector;
 
-		// Token: 0x040002B8 RID: 696
 		private bool _contentLoaded;
 	}
 }

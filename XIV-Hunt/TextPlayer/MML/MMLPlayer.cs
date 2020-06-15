@@ -4,17 +4,14 @@ using System.Text.RegularExpressions;
 
 namespace TextPlayer.MML
 {
-	// Token: 0x02000020 RID: 32
 	public abstract class MMLPlayer : MusicPlayer
 	{
-		// Token: 0x060000D9 RID: 217 RVA: 0x00003E80 File Offset: 0x00002080
 		public MMLPlayer()
 		{
 			this.Settings = new MMLSettings();
 			this.SetDefaultValues();
 		}
 
-		// Token: 0x060000DA RID: 218 RVA: 0x00003EF8 File Offset: 0x000020F8
 		private void SetDefaultValues()
 		{
 			this.octave = 4;
@@ -26,7 +23,6 @@ namespace TextPlayer.MML
 			this.nextCommand = 0.0;
 		}
 
-		// Token: 0x060000DB RID: 219 RVA: 0x00003F48 File Offset: 0x00002148
 		public override void Load(string str)
 		{
 			this.commands = new List<MMLCommand>();
@@ -39,7 +35,6 @@ namespace TextPlayer.MML
 			this.SetDefaultValues();
 		}
 
-		// Token: 0x060000DC RID: 220 RVA: 0x00003FC4 File Offset: 0x000021C4
 		protected virtual void CalculateDuration()
 		{
 			TimeSpan dur = TimeSpan.Zero;
@@ -77,7 +72,6 @@ namespace TextPlayer.MML
 			this.duration = dur;
 		}
 
-		// Token: 0x060000DD RID: 221 RVA: 0x000040D8 File Offset: 0x000022D8
 		public override void Play(TimeSpan currentTime)
 		{
 			base.Play(currentTime);
@@ -88,14 +82,12 @@ namespace TextPlayer.MML
 			this.nextCommand = 0.0;
 		}
 
-		// Token: 0x060000DE RID: 222 RVA: 0x0000412C File Offset: 0x0000232C
 		public override void Stop()
 		{
 			base.Stop();
 			this.SetDefaultValues();
 		}
 
-		// Token: 0x060000DF RID: 223 RVA: 0x0000413C File Offset: 0x0000233C
 		protected virtual void ProcessCommands()
 		{
 			bool noteFound = false;
@@ -115,7 +107,6 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x060000E0 RID: 224 RVA: 0x000041A8 File Offset: 0x000023A8
 		public override void Update(TimeSpan currentTime)
 		{
 			if (!this.playing)
@@ -145,7 +136,6 @@ namespace TextPlayer.MML
 			base.Update(currentTime);
 		}
 
-		// Token: 0x060000E1 RID: 225 RVA: 0x00004264 File Offset: 0x00002464
 		private void NextNote()
 		{
 			bool noteFound = false;
@@ -239,7 +229,6 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x060000E2 RID: 226 RVA: 0x000044F8 File Offset: 0x000026F8
 		private Note ValidateAndPlayNote(Note note)
 		{
 			if (note.Octave < (int)this.Settings.MinOctave)
@@ -259,7 +248,6 @@ namespace TextPlayer.MML
 			return note;
 		}
 
-		// Token: 0x060000E3 RID: 227 RVA: 0x00004598 File Offset: 0x00002798
 		private MMLLength GetRest(MMLCommand cmd, out double measureLength)
 		{
 			MMLLength rest = this.GetLength(cmd.Args[0], cmd.Args[1]);
@@ -267,7 +255,6 @@ namespace TextPlayer.MML
 			return rest;
 		}
 
-		// Token: 0x060000E4 RID: 228 RVA: 0x000045F5 File Offset: 0x000027F5
 		private Note GetNote(MMLCommand cmd, out double measureLength, MMLLength defaultLength, int currentOctave, double currentSpm)
 		{
 			if (cmd.Type == MMLCommandType.Note)
@@ -277,7 +264,6 @@ namespace TextPlayer.MML
 			return this.GetNoteNumber(cmd, out measureLength, defaultLength, currentSpm);
 		}
 
-		// Token: 0x060000E5 RID: 229 RVA: 0x0000461C File Offset: 0x0000281C
 		private Note GetNoteNormal(MMLCommand cmd, out double measureLength, MMLLength defaultLength, int currentOctave, double currentSpm)
 		{
 			Note note = new Note
@@ -312,7 +298,6 @@ namespace TextPlayer.MML
 			return note;
 		}
 
-		// Token: 0x060000E6 RID: 230 RVA: 0x00004720 File Offset: 0x00002920
 		private Note GetNoteNumber(MMLCommand cmd, out double measureLength, MMLLength defaultLength, double currentSpm)
 		{
 			Note note = new Note
@@ -344,7 +329,6 @@ namespace TextPlayer.MML
 			return note;
 		}
 
-		// Token: 0x060000E7 RID: 231 RVA: 0x000047F0 File Offset: 0x000029F0
 		protected virtual void ProcessCommand(MMLCommand cmd)
 		{
 			switch (cmd.Type)
@@ -372,19 +356,16 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x060000E8 RID: 232 RVA: 0x00004880 File Offset: 0x00002A80
 		protected virtual void SetLength(MMLCommand cmd)
 		{
 			this.SetLength(cmd, ref this.length);
 		}
 
-		// Token: 0x060000E9 RID: 233 RVA: 0x0000488F File Offset: 0x00002A8F
 		protected virtual void SetLength(MMLCommand cmd, ref MMLLength len)
 		{
 			len = new MMLLength(Convert.ToInt32(cmd.Args[0]), cmd.Args[1] != "");
 		}
 
-		// Token: 0x060000EA RID: 234 RVA: 0x000048C4 File Offset: 0x00002AC4
 		protected virtual void SetOctave(int newOctave)
 		{
 			this.octave = newOctave;
@@ -399,13 +380,11 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x060000EB RID: 235 RVA: 0x00004921 File Offset: 0x00002B21
 		protected virtual void SetTempo(MMLCommand cmd)
 		{
 			this.Tempo = Convert.ToInt32(cmd.Args[0]);
 		}
 
-		// Token: 0x060000EC RID: 236 RVA: 0x0000493C File Offset: 0x00002B3C
 		protected virtual void SetVolume(int vol)
 		{
 			if (this.Mode == MMLMode.ArcheAge)
@@ -424,13 +403,11 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x060000ED RID: 237 RVA: 0x000049DC File Offset: 0x00002BDC
 		private MMLLength GetLength(string number, string dot)
 		{
 			return this.GetLength(number, dot, this.length);
 		}
 
-		// Token: 0x060000EE RID: 238 RVA: 0x000049EC File Offset: 0x00002BEC
 		private MMLLength GetLength(string number, string dot, MMLLength defaultLength)
 		{
 			MMLLength i = defaultLength;
@@ -445,16 +422,12 @@ namespace TextPlayer.MML
 			return i;
 		}
 
-		// Token: 0x060000EF RID: 239 RVA: 0x00004A2E File Offset: 0x00002C2E
 		private void SetTempoAndSecondsPerMeasure(int value, ref int tempo, ref double spm)
 		{
 			tempo = Math.Max((int)this.Settings.MinTempo, Math.Min((int)this.Settings.MaxTempo, value));
 			spm = 60.0 / ((double)tempo / 4.0);
 		}
 
-		// Token: 0x17000036 RID: 54
-		// (get) Token: 0x060000F0 RID: 240 RVA: 0x00004A6C File Offset: 0x00002C6C
-		// (set) Token: 0x060000F1 RID: 241 RVA: 0x00004A74 File Offset: 0x00002C74
 		public int Tempo
 		{
 			get
@@ -467,8 +440,6 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x17000037 RID: 55
-		// (get) Token: 0x060000F2 RID: 242 RVA: 0x00004A89 File Offset: 0x00002C89
 		public List<MMLCommand> Commands
 		{
 			get
@@ -477,8 +448,6 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x17000038 RID: 56
-		// (get) Token: 0x060000F3 RID: 243 RVA: 0x00004A91 File Offset: 0x00002C91
 		public TimeSpan NextTick
 		{
 			get
@@ -487,13 +456,8 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x17000039 RID: 57
-		// (get) Token: 0x060000F4 RID: 244 RVA: 0x00004A99 File Offset: 0x00002C99
-		// (set) Token: 0x060000F5 RID: 245 RVA: 0x00004AA1 File Offset: 0x00002CA1
 		public MMLSettings Settings { get; set; }
 
-		// Token: 0x1700003A RID: 58
-		// (get) Token: 0x060000F6 RID: 246 RVA: 0x00004AAA File Offset: 0x00002CAA
 		internal override ValidationSettings ValidationSettings
 		{
 			get
@@ -502,8 +466,6 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x1700003B RID: 59
-		// (get) Token: 0x060000F7 RID: 247 RVA: 0x00004AB2 File Offset: 0x00002CB2
 		public override TimeSpan Duration
 		{
 			get
@@ -512,57 +474,38 @@ namespace TextPlayer.MML
 			}
 		}
 
-		// Token: 0x1700003C RID: 60
-		// (get) Token: 0x060000F8 RID: 248 RVA: 0x00004ABA File Offset: 0x00002CBA
-		// (set) Token: 0x060000F9 RID: 249 RVA: 0x00004AC2 File Offset: 0x00002CC2
 		public MMLMode Mode { get; set; }
 
-		// Token: 0x04000065 RID: 101
 		public const double Tick = 0.0078125;
 
-		// Token: 0x04000066 RID: 102
 		protected TimeSpan nextTick;
 
-		// Token: 0x04000067 RID: 103
 		protected double nextNote;
 
-		// Token: 0x04000068 RID: 104
 		protected double nextCommand;
 
-		// Token: 0x04000069 RID: 105
 		protected double curMeasure;
 
-		// Token: 0x0400006A RID: 106
 		private int octave;
 
-		// Token: 0x0400006B RID: 107
 		private MMLLength length;
 
-		// Token: 0x0400006C RID: 108
 		private int tempo;
 
-		// Token: 0x0400006D RID: 109
 		protected double spm;
 
-		// Token: 0x0400006E RID: 110
 		private int volume;
 
-		// Token: 0x0400006F RID: 111
 		private TimeSpan duration;
 
-		// Token: 0x04000070 RID: 112
 		protected List<MMLCommand> commands;
 
-		// Token: 0x04000071 RID: 113
 		internal List<Note> notes = new List<Note>();
 
-		// Token: 0x04000072 RID: 114
 		protected int cmdIndex;
 
-		// Token: 0x04000073 RID: 115
 		protected int nextNoteIndex;
 
-		// Token: 0x04000074 RID: 116
 		protected string mmlPatterns = string.Concat(new string[]
 		{
 			"[tT]\\d{1,3}|[lL]",

@@ -7,10 +7,8 @@ using Splat;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000079 RID: 121
 	public static class FFXIVProcessHelper
 	{
-		// Token: 0x0600034B RID: 843 RVA: 0x0000EC00 File Offset: 0x0000CE00
 		public static IList<Process> GetFFXIVProcessList()
 		{
 			return (from x in Process.GetProcessesByName("ffxiv")
@@ -20,7 +18,6 @@ namespace FFXIV_GameSense
 			select x).ToList<Process>();
 		}
 
-		// Token: 0x0600034C RID: 844 RVA: 0x0000EC74 File Offset: 0x0000CE74
 		private static bool ValidateProcess(string exeName, Process process)
 		{
 			try
@@ -34,7 +31,6 @@ namespace FFXIV_GameSense
 			return false;
 		}
 
-		// Token: 0x0600034D RID: 845 RVA: 0x0000ECE0 File Offset: 0x0000CEE0
 		public static Process GetFFXIVProcess(int pid = 0)
 		{
 			Process result;
@@ -66,10 +62,8 @@ namespace FFXIV_GameSense
 			return result;
 		}
 
-		// Token: 0x04000275 RID: 629
 		private const string DX9ExeName = "ffxiv.exe";
 
-		// Token: 0x04000276 RID: 630
 		internal const string DX11ExeName = "ffxiv_dx11.exe";
 	}
 }

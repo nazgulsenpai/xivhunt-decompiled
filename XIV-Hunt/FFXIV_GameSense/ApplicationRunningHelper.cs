@@ -3,10 +3,8 @@ using System.Diagnostics;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000094 RID: 148
 	public static class ApplicationRunningHelper
 	{
-		// Token: 0x060003CF RID: 975 RVA: 0x00011FA0 File Offset: 0x000101A0
 		public static bool AlreadyRunning()
 		{
 			bool result;

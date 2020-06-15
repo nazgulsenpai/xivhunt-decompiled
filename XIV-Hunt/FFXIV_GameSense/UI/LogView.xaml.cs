@@ -15,10 +15,8 @@ using Splat;
 
 namespace FFXIV_GameSense.UI
 {
-	// Token: 0x020000B5 RID: 181
 	public partial class LogView : Window
 	{
-		// Token: 0x060004AC RID: 1196 RVA: 0x00015E38 File Offset: 0x00014038
 		public LogView()
 		{
 			this.InitializeComponent();
@@ -27,7 +25,6 @@ namespace FFXIV_GameSense.UI
 			this.LogLevelColors = ComboBoxItems.ToDictionary((ComboBoxItem x) => (LogLevel)Convert.ToInt32(x.Tag, CultureInfo.CurrentCulture), (ComboBoxItem y) => y.Foreground);
 		}
 
-		// Token: 0x060004AD RID: 1197 RVA: 0x00015EC4 File Offset: 0x000140C4
 		public void AddLogLine(string text, LogLevel level)
 		{
 			if (level > (LogLevel)Settings.Default.LogLevel)
@@ -65,14 +62,12 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x060004AE RID: 1198 RVA: 0x00015F1A File Offset: 0x0001411A
 		private void Window_Closing(object sender, CancelEventArgs e)
 		{
 			e.Cancel = true;
 			base.Visibility = Visibility.Hidden;
 		}
 
-		// Token: 0x060004AF RID: 1199 RVA: 0x00015F2C File Offset: 0x0001412C
 		private bool IsVerticalScrollOnBottom()
 		{
 			double dVer = this.LogViewRTB.VerticalOffset;
@@ -81,7 +76,6 @@ namespace FFXIV_GameSense.UI
 			return dVer != 0.0 && dVer + dViewport == dExtent;
 		}
 
-		// Token: 0x04000399 RID: 921
 		private readonly Dictionary<LogLevel, Brush> LogLevelColors;
 	}
 }

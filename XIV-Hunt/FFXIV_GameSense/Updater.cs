@@ -13,10 +13,8 @@ using Squirrel;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x020000A4 RID: 164
 	public static class Updater
 	{
-		// Token: 0x06000433 RID: 1075 RVA: 0x00014046 File Offset: 0x00012246
 		public static Task Create(CancellationToken token)
 		{
 			return new Task(delegate()
@@ -25,7 +23,6 @@ namespace FFXIV_GameSense
 			}, token, TaskCreationOptions.LongRunning);
 		}
 
-		// Token: 0x06000434 RID: 1076 RVA: 0x00014070 File Offset: 0x00012270
 		private static void CheckAndApplyUpdates()
 		{
 			bool shouldRestart = false;
@@ -52,7 +49,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000435 RID: 1077 RVA: 0x000140FC File Offset: 0x000122FC
 		internal static void OnAppUpdate()
 		{
 			using (UpdateManager mgr = new UpdateManager(Settings.Default.UpdateLocation, null, null, null))
@@ -62,7 +58,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000436 RID: 1078 RVA: 0x00014148 File Offset: 0x00012348
 		internal static void OnFirstRun()
 		{
 			Updater.BackupLastStandaloneSettings();
@@ -70,7 +65,6 @@ namespace FFXIV_GameSense
 			Settings.Default.Reload();
 		}
 
-		// Token: 0x06000437 RID: 1079 RVA: 0x00014160 File Offset: 0x00012360
 		private static void BackupSettings()
 		{
 			string filePath = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath;
@@ -78,7 +72,6 @@ namespace FFXIV_GameSense
 			File.Copy(filePath, destination, true);
 		}
 
-		// Token: 0x06000438 RID: 1080 RVA: 0x0001419C File Offset: 0x0001239C
 		private static void BackupLastStandaloneSettings()
 		{
 			string gsDir = Directory.GetParent(Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath)).Parent.FullName;
@@ -98,7 +91,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000439 RID: 1081 RVA: 0x0001427C File Offset: 0x0001247C
 		internal static void RestartApp()
 		{
 			Settings.Default.Save();
@@ -115,7 +107,6 @@ namespace FFXIV_GameSense
 			UpdateManager.RestartApp(SettingsForm.StartProcessPath, null);
 		}
 
-		// Token: 0x0600043A RID: 1082 RVA: 0x000142DC File Offset: 0x000124DC
 		private static void DeleteOldVersions()
 		{
 			DirectoryInfo appDir = new DirectoryInfo(Assembly.GetExecutingAssembly().Location).Parent.Parent;
@@ -150,7 +141,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600043B RID: 1083 RVA: 0x00014424 File Offset: 0x00012624
 		internal static void RestoreSettings()
 		{
 			string destFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath;

@@ -17,26 +17,14 @@ using XIVDB;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000035 RID: 53
 	internal class FFXIVHunts : IDisposable
 	{
-		// Token: 0x17000055 RID: 85
-		// (get) Token: 0x0600018C RID: 396 RVA: 0x00006CD0 File Offset: 0x00004ED0
-		// (set) Token: 0x0600018D RID: 397 RVA: 0x00006CD7 File Offset: 0x00004ED7
 		internal static HttpClient Http { get; private set; } = new HttpClient();
 
-		// Token: 0x17000056 RID: 86
-		// (get) Token: 0x0600018E RID: 398 RVA: 0x00006CDF File Offset: 0x00004EDF
-		// (set) Token: 0x0600018F RID: 399 RVA: 0x00006CE6 File Offset: 0x00004EE6
 		internal static bool Joined { get; private set; }
 
-		// Token: 0x17000057 RID: 87
-		// (get) Token: 0x06000190 RID: 400 RVA: 0x00006CEE File Offset: 0x00004EEE
-		// (set) Token: 0x06000191 RID: 401 RVA: 0x00006CF5 File Offset: 0x00004EF5
 		internal static bool Joining { get; private set; }
 
-		// Token: 0x17000058 RID: 88
-		// (get) Token: 0x06000192 RID: 402 RVA: 0x00006D00 File Offset: 0x00004F00
 		private static World CurrentWorld
 		{
 			get
@@ -50,7 +38,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000193 RID: 403 RVA: 0x00006D40 File Offset: 0x00004F40
 		internal async Task LeaveGroup()
 		{
 			if (FFXIVHunts.Joined)
@@ -62,7 +49,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000194 RID: 404 RVA: 0x00006D85 File Offset: 0x00004F85
 		internal FFXIVHunts(Window1 pw1)
 		{
 			this.w1 = pw1;
@@ -70,7 +56,6 @@ namespace FFXIV_GameSense
 			this.CreateConnection();
 		}
 
-		// Token: 0x06000195 RID: 405 RVA: 0x00006DB4 File Offset: 0x00004FB4
 		private static void CreateWorldsOnDC(IEnumerable<World> worldsOnCurrentDC)
 		{
 			foreach (World worldNotYetCreated in from x in worldsOnCurrentDC
@@ -98,7 +83,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000196 RID: 406 RVA: 0x00006F54 File Offset: 0x00005154
 		private void CreateConnection()
 		{
 			if (FFXIVHunts.hubConnection == null)
@@ -108,7 +92,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000197 RID: 407 RVA: 0x00006F70 File Offset: 0x00005170
 		private void RegisterHubMethods()
 		{
 			FFXIVHunts.hubConnection.Connection.On("ReceiveHunt", delegate(Hunt hunt)
@@ -151,7 +134,6 @@ namespace FFXIV_GameSense
 			FFXIVHunts.hubConnection.Connection.Closed += this.Connection_Closed;
 		}
 
-		// Token: 0x06000198 RID: 408 RVA: 0x00007030 File Offset: 0x00005230
 		private static void DCInstanceMatch(DataCenterInstanceMatchInfo instance)
 		{
 			string s = string.Format(CultureInfo.CurrentCulture, Resources.DCInstanceMatch, Program.AssemblyName.Name, (FFXIVHunts.ServerTimeUtc - instance.StartTime).TotalMinutes.ToString("F0", CultureInfo.CurrentCulture), string.Format("{0}DCInstance/{1}", "https://xivhunt.net/", instance.ID));
@@ -161,7 +143,6 @@ namespace FFXIV_GameSense
 			Program.mem.WriteChatMessage(cm);
 		}
 
-		// Token: 0x06000199 RID: 409 RVA: 0x000070C9 File Offset: 0x000052C9
 		private void ReceiveFATE(FATEReport fate)
 		{
 			if (this.PutInChat(fate) && Settings.Default.FlashTaskbarIconOnHuntAndFATEs)
@@ -170,7 +151,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600019A RID: 410 RVA: 0x000070F0 File Offset: 0x000052F0
 		private void ReceiveHunt(Hunt hunt)
 		{
 			LogHost.Default.Debug(string.Format(CultureInfo.CurrentCulture, "[{0}] Report received: {1}", GameResources.GetWorldName(hunt.WorldId), hunt.Name));
@@ -185,14 +165,12 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600019B RID: 411 RVA: 0x00007168 File Offset: 0x00005368
 		private Task Connection_Closed(Exception arg)
 		{
 			FFXIVHunts.Joined = (FFXIVHunts.Joining = false);
 			return Task.CompletedTask;
 		}
 
-		// Token: 0x0600019C RID: 412 RVA: 0x0000717C File Offset: 0x0000537C
 		internal HuntRank HuntRankFor(ushort HuntID)
 		{
 			HuntRank hr;
@@ -203,7 +181,6 @@ namespace FFXIV_GameSense
 			throw new ArgumentException("Unknown hunt", "HuntID");
 		}
 
-		// Token: 0x0600019D RID: 413 RVA: 0x000071A4 File Offset: 0x000053A4
 		internal async Task Connect()
 		{
 			this.CreateConnection();
@@ -225,7 +202,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600019E RID: 414 RVA: 0x000071EC File Offset: 0x000053EC
 		private bool PutInChat(FATEReport fate)
 		{
 			World world;
@@ -273,7 +249,6 @@ namespace FFXIV_GameSense
 			return false;
 		}
 
-		// Token: 0x0600019F RID: 415 RVA: 0x000074CD File Offset: 0x000056CD
 		private static string GetWorldPrepend(ushort wid)
 		{
 			if (Settings.Default.NotificationsFromOtherWorlds)
@@ -283,7 +258,6 @@ namespace FFXIV_GameSense
 			return string.Empty;
 		}
 
-		// Token: 0x060001A0 RID: 416 RVA: 0x000074F8 File Offset: 0x000056F8
 		internal async Task QueryHunt(ushort id)
 		{
 			if (FFXIVHunts.hubConnection.Connected && FFXIVHunts.Joined)
@@ -343,7 +317,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001A1 RID: 417 RVA: 0x00007540 File Offset: 0x00005740
 		internal async Task LastKnownInfoForFATE(ushort id)
 		{
 			if (FFXIVHunts.hubConnection.Connected && FFXIVHunts.Joined)
@@ -379,13 +352,11 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001A2 RID: 418 RVA: 0x00007588 File Offset: 0x00005788
 		internal Task<Item> QueryItem(string itemsearch)
 		{
 			return FFXIVHunts.hubConnection.Connection.InvokeAsync("QueryItem", itemsearch, Thread.CurrentThread.CurrentUICulture.Name, default(CancellationToken));
 		}
 
-		// Token: 0x060001A3 RID: 419 RVA: 0x000075C4 File Offset: 0x000057C4
 		internal async void Check(FFXIVMemory mem)
 		{
 			FFXIVHunts.<>c__DisplayClass44_0 CS$<>8__locals1 = new FFXIVHunts.<>c__DisplayClass44_0();
@@ -467,7 +438,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001A4 RID: 420 RVA: 0x00007608 File Offset: 0x00005808
 		private async Task LeaveDCZone()
 		{
 			try
@@ -483,7 +453,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001A5 RID: 421 RVA: 0x00007648 File Offset: 0x00005848
 		private async Task<DateTime> JoinDCZone(ushort zoneid)
 		{
 			try
@@ -514,7 +483,6 @@ namespace FFXIV_GameSense
 			return DateTime.MaxValue;
 		}
 
-		// Token: 0x060001A6 RID: 422 RVA: 0x00007690 File Offset: 0x00005890
 		private async Task ReportDCShoutChat(IEnumerable<ChatMessage> recentShoutChat)
 		{
 			if (recentShoutChat.Any<ChatMessage>() && FFXIVHunts.hubConnection.Connected && FFXIVHunts.Joined)
@@ -531,7 +499,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001A7 RID: 423 RVA: 0x000076D8 File Offset: 0x000058D8
 		internal Task RandomPositionForBNpc(ushort bnpcid)
 		{
 			FFXIVHunts.<RandomPositionForBNpc>d__48 <RandomPositionForBNpc>d__;
@@ -543,7 +510,6 @@ namespace FFXIV_GameSense
 			return <RandomPositionForBNpc>d__.<>t__builder.Task;
 		}
 
-		// Token: 0x060001A8 RID: 424 RVA: 0x00007720 File Offset: 0x00005920
 		private async Task ReportFate(FATE f)
 		{
 			int idx = FFXIVHunts.CurrentWorld.FATEs.FindIndex((FATEReport h) => h.ID == f.ID);
@@ -578,7 +544,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001A9 RID: 425 RVA: 0x00007765 File Offset: 0x00005965
 		private static bool FateNotifyCheck(ushort id)
 		{
 			FATEInfo fateinfo = GameResources.GetFATEInfo(id);
@@ -586,7 +551,6 @@ namespace FFXIV_GameSense
 			return Settings.Default.FATEs.Contains(id);
 		}
 
-		// Token: 0x060001AA RID: 426 RVA: 0x00007794 File Offset: 0x00005994
 		private async Task JoinServerGroup()
 		{
 			if ((!FFXIVHunts.Joined || !FFXIVHunts.hubConnection.Connected) && !FFXIVHunts.Joining)
@@ -644,7 +608,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001AB RID: 427 RVA: 0x000077DC File Offset: 0x000059DC
 		private bool PutInChat(Hunt hunt)
 		{
 			World w;
@@ -685,7 +648,6 @@ namespace FFXIV_GameSense
 			return false;
 		}
 
-		// Token: 0x060001AC RID: 428 RVA: 0x00007A74 File Offset: 0x00005C74
 		internal static ushort GetZoneId(ushort huntId)
 		{
 			foreach (KeyValuePair<ushort, HashSet<ushort>> i in FFXIVHunts.MapHunts)
@@ -698,7 +660,6 @@ namespace FFXIV_GameSense
 			return 0;
 		}
 
-		// Token: 0x060001AD RID: 429 RVA: 0x00007ADC File Offset: 0x00005CDC
 		private void CheckAndPlaySound(HuntRank r)
 		{
 			try
@@ -715,7 +676,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001AE RID: 430 RVA: 0x00007B2C File Offset: 0x00005D2C
 		private async Task ReportHunt(Monster c)
 		{
 			int idx = FFXIVHunts.CurrentWorld.Hunts.FindIndex((Hunt h) => h.Id == c.BNpcNameID);
@@ -745,7 +705,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001AF RID: 431 RVA: 0x00007B74 File Offset: 0x00005D74
 		public void Dispose()
 		{
 			this.LeaveGroup();
@@ -764,7 +723,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x040000FC RID: 252
 		internal static readonly Dictionary<ushort, HashSet<ushort>> MapHunts = new Dictionary<ushort, HashSet<ushort>>
 		{
 			{
@@ -1120,13 +1078,10 @@ namespace FFXIV_GameSense
 			}
 		};
 
-		// Token: 0x040000FD RID: 253
 		internal static Dictionary<ushort, World> Worlds = new Dictionary<ushort, World>();
 
-		// Token: 0x040000FE RID: 254
 		private static readonly HashSet<uint> HuntsPutInChat = new HashSet<uint>();
 
-		// Token: 0x040000FF RID: 255
 		private static readonly uint[] DCZones = new uint[]
 		{
 			630u,
@@ -1137,34 +1092,24 @@ namespace FFXIV_GameSense
 			827u
 		};
 
-		// Token: 0x04000100 RID: 256
 		private static HuntsHubConnection hubConnection;
 
-		// Token: 0x04000104 RID: 260
 		private static volatile ushort LastJoinedWorldID = 0;
 
-		// Token: 0x04000105 RID: 261
 		private static volatile ushort lastZone;
 
-		// Token: 0x04000106 RID: 262
 		internal const string baseUrl = "https://xivhunt.net/";
 
-		// Token: 0x04000107 RID: 263
 		internal const string VerifiedCharactersUrl = "https://xivhunt.net/Manage/VerifiedCharacters";
 
-		// Token: 0x04000108 RID: 264
 		private static DateTime ServerTimeUtc;
 
-		// Token: 0x04000109 RID: 265
 		private static DateTime LastShoutChatSync;
 
-		// Token: 0x0400010A RID: 266
 		private static DataCenterInstanceMatchInfo DCInstance;
 
-		// Token: 0x0400010B RID: 267
 		private readonly Window1 w1;
 
-		// Token: 0x0400010C RID: 268
 		private static Reporter Reporter;
 	}
 }

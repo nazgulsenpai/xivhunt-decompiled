@@ -10,21 +10,15 @@ using System.Windows.Media;
 
 namespace FFXIV_GameSense.Overlay
 {
-	// Token: 0x020000C1 RID: 193
 	public partial class EntityOverlayControl : UserControl
 	{
-		// Token: 0x170000E5 RID: 229
-		// (get) Token: 0x060004F8 RID: 1272 RVA: 0x00017330 File Offset: 0x00015530
-		// (set) Token: 0x060004F9 RID: 1273 RVA: 0x00017338 File Offset: 0x00015538
 		private EntityOverlayControlViewModel Model { get; set; }
 
-		// Token: 0x060004FA RID: 1274 RVA: 0x00017341 File Offset: 0x00015541
 		public EntityOverlayControl()
 		{
 			this.InitializeComponent();
 		}
 
-		// Token: 0x060004FB RID: 1275 RVA: 0x00017350 File Offset: 0x00015550
 		public EntityOverlayControl(Entity c, bool IsSelf = false)
 		{
 			this.InitializeComponent();
@@ -41,7 +35,6 @@ namespace FFXIV_GameSense.Overlay
 			base.DataContext = this.Model;
 		}
 
-		// Token: 0x060004FC RID: 1276 RVA: 0x000173B4 File Offset: 0x000155B4
 		private Brush GetColor(Entity c, bool IsSelf)
 		{
 			if (c is PC)
@@ -67,26 +60,22 @@ namespace FFXIV_GameSense.Overlay
 			}
 		}
 
-		// Token: 0x060004FD RID: 1277 RVA: 0x00017448 File Offset: 0x00015648
 		public string GetEntityName()
 		{
 			return this.Model.Name;
 		}
 
-		// Token: 0x060004FE RID: 1278 RVA: 0x00017455 File Offset: 0x00015655
 		private void SetNameColor(Brush brush)
 		{
 			this.Model.NameColor = brush;
 		}
 
-		// Token: 0x060004FF RID: 1279 RVA: 0x00017464 File Offset: 0x00015664
 		private void RotateImage(float angle)
 		{
 			RotateTransform rotateTransform = new RotateTransform((double)angle);
 			this.image.RenderTransform = rotateTransform;
 		}
 
-		// Token: 0x06000500 RID: 1280 RVA: 0x00017488 File Offset: 0x00015688
 		public void Update(Entity c)
 		{
 			this.Model.Name = ((!string.IsNullOrWhiteSpace(c.Name)) ? c.Name : (c.GetType().Name + " No Name"));
@@ -110,7 +99,6 @@ namespace FFXIV_GameSense.Overlay
 			}
 		}
 
-		// Token: 0x06000501 RID: 1281 RVA: 0x00017548 File Offset: 0x00015748
 		private static string GetIcon(Entity c)
 		{
 			if (c is PC)
@@ -159,10 +147,8 @@ namespace FFXIV_GameSense.Overlay
 			return "/Resources/Images/ui/uld/image2.tex.png";
 		}
 
-		// Token: 0x040003CB RID: 971
 		private const string icondir = "/Resources/Images/ui/icon/060000/";
 
-		// Token: 0x040003CC RID: 972
 		private static readonly Dictionary<string, string> IconUris = new Dictionary<string, string>
 		{
 			{

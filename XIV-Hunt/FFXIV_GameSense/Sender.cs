@@ -6,16 +6,11 @@ using Newtonsoft.Json;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000029 RID: 41
 	public class Sender
 	{
-		// Token: 0x17000050 RID: 80
-		// (get) Token: 0x06000152 RID: 338 RVA: 0x000061E1 File Offset: 0x000043E1
-		// (set) Token: 0x06000153 RID: 339 RVA: 0x000061E9 File Offset: 0x000043E9
 		[JsonProperty]
 		public string Name { get; private set; }
 
-		// Token: 0x06000154 RID: 340 RVA: 0x000061F4 File Offset: 0x000043F4
 		public Sender(IEnumerable<byte> arr, out int msgStart)
 		{
 			if (arr.IndexOf(Sender.LinkStart) == 0)
@@ -28,13 +23,11 @@ namespace FFXIV_GameSense
 			msgStart = arr.TakeWhile((byte x) => x != 58).Count<byte>() + 1;
 		}
 
-		// Token: 0x06000155 RID: 341 RVA: 0x000062DE File Offset: 0x000044DE
 		public Sender(string v)
 		{
 			this.Name = v;
 		}
 
-		// Token: 0x06000156 RID: 342 RVA: 0x000062F0 File Offset: 0x000044F0
 		internal byte[] ToArray(bool link = true, bool world = true)
 		{
 			List<byte> arr = new List<byte>();
@@ -55,7 +48,6 @@ namespace FFXIV_GameSense
 			return arr.ToArray();
 		}
 
-		// Token: 0x04000096 RID: 150
 		[JsonIgnore]
 		private static readonly byte[] LinkStart = new byte[]
 		{
@@ -63,7 +55,6 @@ namespace FFXIV_GameSense
 			39
 		};
 
-		// Token: 0x04000097 RID: 151
 		[JsonIgnore]
 		private static readonly byte[] LinkEnd = new byte[]
 		{
@@ -79,7 +70,6 @@ namespace FFXIV_GameSense
 			3
 		};
 
-		// Token: 0x04000098 RID: 152
 		[JsonIgnore]
 		private static readonly byte[] LinkStartTemplate = new byte[]
 		{

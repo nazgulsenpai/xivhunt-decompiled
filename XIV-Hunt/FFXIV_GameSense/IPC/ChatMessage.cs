@@ -5,11 +5,9 @@ using System.Text;
 
 namespace FFXIV_GameSense.IPC
 {
-	// Token: 0x020000CC RID: 204
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
 	internal struct ChatMessage
 	{
-		// Token: 0x06000643 RID: 1603 RVA: 0x000194C8 File Offset: 0x000176C8
 		public ChatMessage(ChatMessage chatMessage, uint sid, byte isLocal)
 		{
 			this.LogKind = (byte)chatMessage.Channel;
@@ -39,21 +37,16 @@ namespace FFXIV_GameSense.IPC
 			this.IsLocal = isLocal;
 		}
 
-		// Token: 0x040003E2 RID: 994
 		private readonly byte LogKind;
 
-		// Token: 0x040003E3 RID: 995
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)]
 		private readonly byte[] SenderName;
 
-		// Token: 0x040003E4 RID: 996
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 4096)]
 		private readonly byte[] Message;
 
-		// Token: 0x040003E5 RID: 997
 		private readonly uint SenderActorId;
 
-		// Token: 0x040003E6 RID: 998
 		private readonly byte IsLocal;
 	}
 }

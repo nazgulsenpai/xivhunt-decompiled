@@ -5,23 +5,14 @@ using XIVDB;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000049 RID: 73
 	internal class Hunt
 	{
-		// Token: 0x1700005B RID: 91
-		// (get) Token: 0x060001EB RID: 491 RVA: 0x0000A8A4 File Offset: 0x00008AA4
-		// (set) Token: 0x060001EC RID: 492 RVA: 0x0000A8AC File Offset: 0x00008AAC
 		[JsonProperty("wId")]
 		internal ushort WorldId { get; set; }
 
-		// Token: 0x1700005C RID: 92
-		// (get) Token: 0x060001ED RID: 493 RVA: 0x0000A8B5 File Offset: 0x00008AB5
-		// (set) Token: 0x060001EE RID: 494 RVA: 0x0000A8BD File Offset: 0x00008ABD
 		[JsonProperty]
 		internal ushort Id { get; set; }
 
-		// Token: 0x1700005D RID: 93
-		// (get) Token: 0x060001EF RID: 495 RVA: 0x0000A8C6 File Offset: 0x00008AC6
 		[JsonProperty("r")]
 		internal HuntRank Rank
 		{
@@ -31,44 +22,24 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x1700005E RID: 94
-		// (get) Token: 0x060001F0 RID: 496 RVA: 0x0000A8D8 File Offset: 0x00008AD8
-		// (set) Token: 0x060001F1 RID: 497 RVA: 0x0000A8E0 File Offset: 0x00008AE0
 		[JsonProperty]
 		internal DateTime LastReported { get; set; }
 
-		// Token: 0x1700005F RID: 95
-		// (get) Token: 0x060001F2 RID: 498 RVA: 0x0000A8E9 File Offset: 0x00008AE9
-		// (set) Token: 0x060001F3 RID: 499 RVA: 0x0000A8F1 File Offset: 0x00008AF1
 		[JsonProperty("i")]
 		internal byte Instance { get; set; }
 
-		// Token: 0x17000060 RID: 96
-		// (get) Token: 0x060001F4 RID: 500 RVA: 0x0000A8FA File Offset: 0x00008AFA
-		// (set) Token: 0x060001F5 RID: 501 RVA: 0x0000A902 File Offset: 0x00008B02
 		[JsonProperty("x")]
 		internal float LastX { get; set; }
 
-		// Token: 0x17000061 RID: 97
-		// (get) Token: 0x060001F6 RID: 502 RVA: 0x0000A90B File Offset: 0x00008B0B
-		// (set) Token: 0x060001F7 RID: 503 RVA: 0x0000A913 File Offset: 0x00008B13
 		[JsonProperty("y")]
 		internal float LastY { get; set; }
 
-		// Token: 0x17000062 RID: 98
-		// (get) Token: 0x060001F8 RID: 504 RVA: 0x0000A91C File Offset: 0x00008B1C
-		// (set) Token: 0x060001F9 RID: 505 RVA: 0x0000A924 File Offset: 0x00008B24
 		[JsonProperty]
 		internal bool LastAlive { get; set; }
 
-		// Token: 0x17000063 RID: 99
-		// (get) Token: 0x060001FA RID: 506 RVA: 0x0000A92D File Offset: 0x00008B2D
-		// (set) Token: 0x060001FB RID: 507 RVA: 0x0000A935 File Offset: 0x00008B35
 		[JsonProperty]
 		internal uint OccurrenceID { get; set; }
 
-		// Token: 0x17000064 RID: 100
-		// (get) Token: 0x060001FC RID: 508 RVA: 0x0000A93E File Offset: 0x00008B3E
 		[JsonIgnore]
 		internal string WorldName
 		{
@@ -78,8 +49,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x17000065 RID: 101
-		// (get) Token: 0x060001FD RID: 509 RVA: 0x0000A94B File Offset: 0x00008B4B
 		[JsonIgnore]
 		internal string Name
 		{
@@ -89,7 +58,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060001FE RID: 510 RVA: 0x0000A95C File Offset: 0x00008B5C
 		private static Dictionary<ushort, HuntRank> IdexRanks()
 		{
 			Dictionary<ushort, HuntRank> r = new Dictionary<ushort, HuntRank>
@@ -255,12 +223,10 @@ namespace FFXIV_GameSense
 			return r;
 		}
 
-		// Token: 0x060001FF RID: 511 RVA: 0x0000AC07 File Offset: 0x00008E07
 		public Hunt()
 		{
 		}
 
-		// Token: 0x06000200 RID: 512 RVA: 0x0000AC25 File Offset: 0x00008E25
 		internal Hunt(ushort _id, ushort wid)
 		{
 			this.WorldId = wid;
@@ -268,8 +234,6 @@ namespace FFXIV_GameSense
 			this.LastReported = DateTime.MinValue;
 		}
 
-		// Token: 0x17000066 RID: 102
-		// (get) Token: 0x06000201 RID: 513 RVA: 0x0000AC5C File Offset: 0x00008E5C
 		internal bool IsARR
 		{
 			get
@@ -278,8 +242,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x17000067 RID: 103
-		// (get) Token: 0x06000202 RID: 514 RVA: 0x0000AC6B File Offset: 0x00008E6B
 		internal bool IsHW
 		{
 			get
@@ -288,8 +250,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x17000068 RID: 104
-		// (get) Token: 0x06000203 RID: 515 RVA: 0x0000AC89 File Offset: 0x00008E89
 		internal bool IsSB
 		{
 			get
@@ -298,8 +258,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x17000069 RID: 105
-		// (get) Token: 0x06000204 RID: 516 RVA: 0x0000ACA7 File Offset: 0x00008EA7
 		internal bool IsSHB
 		{
 			get
@@ -308,7 +266,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000205 RID: 517 RVA: 0x0000ACB8 File Offset: 0x00008EB8
 		public override bool Equals(object obj)
 		{
 			Hunt item = obj as Hunt;
@@ -323,7 +280,6 @@ namespace FFXIV_GameSense
 			return this.Id.Equals(item.Id) && this.WorldId.Equals(item.WorldId);
 		}
 
-		// Token: 0x06000206 RID: 518 RVA: 0x0000AD88 File Offset: 0x00008F88
 		public override int GetHashCode()
 		{
 			if (this.WorldId > 1000 && this.WorldId < 2000 && (this.IsSHB || FFXIVHunts.GetZoneId(this.Id) == 156 || FFXIVHunts.GetZoneId(this.Id) == 152))
@@ -333,19 +289,15 @@ namespace FFXIV_GameSense
 			return this.Id.GetHashCode() ^ this.WorldId.GetHashCode();
 		}
 
-		// Token: 0x06000207 RID: 519 RVA: 0x0000AE25 File Offset: 0x00009025
 		internal static bool TryGetHuntRank(ushort HuntID, out HuntRank hr)
 		{
 			return Hunt.RankMap.TryGetValue(HuntID, out hr);
 		}
 
-		// Token: 0x04000163 RID: 355
 		internal DateTime lastPutInChat = DateTime.MinValue;
 
-		// Token: 0x04000164 RID: 356
 		internal DateTime lastReportedDead = DateTime.MinValue;
 
-		// Token: 0x04000169 RID: 361
 		[JsonIgnore]
 		internal static readonly Dictionary<ushort, HuntRank> RankMap = Hunt.IdexRanks();
 	}

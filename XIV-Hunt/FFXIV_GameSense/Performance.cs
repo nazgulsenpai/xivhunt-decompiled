@@ -8,15 +8,10 @@ using XIVDB;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000095 RID: 149
 	internal class Performance
 	{
-		// Token: 0x170000D2 RID: 210
-		// (get) Token: 0x060003D0 RID: 976 RVA: 0x00012040 File Offset: 0x00010240
-		// (set) Token: 0x060003D1 RID: 977 RVA: 0x00012048 File Offset: 0x00010248
 		internal List<Note> Sheet { get; set; }
 
-		// Token: 0x060003D2 RID: 978 RVA: 0x00012054 File Offset: 0x00010254
 		public Performance(string i)
 		{
 			this.Sheet = new List<Note>();
@@ -49,7 +44,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x060003D3 RID: 979 RVA: 0x000121A5 File Offset: 0x000103A5
 		private static string LeewaySharpFlat(string nn)
 		{
 			nn = nn.Replace('#', '♯');
@@ -60,7 +54,6 @@ namespace FFXIV_GameSense
 			return nn;
 		}
 
-		// Token: 0x060003D4 RID: 980 RVA: 0x000121DC File Offset: 0x000103DC
 		private static string LeewayNote(string note)
 		{
 			if (Performance.notes.Any((Note x) => x.Name == note) || note.Length < 2)
@@ -93,7 +86,6 @@ namespace FFXIV_GameSense
 			return note;
 		}
 
-		// Token: 0x060003D5 RID: 981 RVA: 0x00012370 File Offset: 0x00010570
 		internal async Task Play(int pid, CancellationToken cts)
 		{
 			PipeMessage noteOff = new PipeMessage(pid, PMCommand.PlayNote, 0);
@@ -116,7 +108,6 @@ namespace FFXIV_GameSense
 			List<Note>.Enumerator enumerator = default(List<Note>.Enumerator);
 		}
 
-		// Token: 0x04000317 RID: 791
 		private static readonly IEnumerable<Note> notes = GameResources.GetPerformanceNotes();
 	}
 }

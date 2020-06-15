@@ -5,11 +5,9 @@ using System.Runtime.CompilerServices;
 
 namespace ResourceEmbedderCompilerGenerated
 {
-	// Token: 0x020000D8 RID: 216
 	[CompilerGenerated]
 	public static class ResourceEmbedderILInjected
 	{
-		// Token: 0x06000644 RID: 1604 RVA: 0x0001959C File Offset: 0x0001779C
 		private static Assembly FindMainAssembly(AssemblyName requestedAssemblyName)
 		{
 			if (requestedAssemblyName == null)
@@ -32,7 +30,6 @@ namespace ResourceEmbedderCompilerGenerated
 			return null;
 		}
 
-		// Token: 0x06000645 RID: 1605 RVA: 0x0001962C File Offset: 0x0001782C
 		private static Assembly LoadFromResource(AssemblyName requestedAssemblyName, Assembly requestingAssembly)
 		{
 			if (requestedAssemblyName == null || requestedAssemblyName.CultureInfo == null)
@@ -69,13 +66,11 @@ namespace ResourceEmbedderCompilerGenerated
 			return null;
 		}
 
-		// Token: 0x06000646 RID: 1606 RVA: 0x00019740 File Offset: 0x00017940
 		private static bool IsLocalizedAssembly(AssemblyName requestedAssemblyName)
 		{
 			return requestedAssemblyName.Name.EndsWith(".resources", StringComparison.InvariantCultureIgnoreCase);
 		}
 
-		// Token: 0x06000647 RID: 1607 RVA: 0x00019754 File Offset: 0x00017954
 		public static Assembly AssemblyResolve(object sender, ResolveEventArgs args)
 		{
 			AssemblyName requestedAssemblyName;
@@ -94,7 +89,6 @@ namespace ResourceEmbedderCompilerGenerated
 			return ResourceEmbedderILInjected.LoadFromResource(requestedAssemblyName, args.RequestingAssembly);
 		}
 
-		// Token: 0x06000648 RID: 1608 RVA: 0x000197C4 File Offset: 0x000179C4
 		public static void Attach()
 		{
 			AppDomain.CurrentDomain.AssemblyResolve += ResourceEmbedderILInjected.AssemblyResolve;

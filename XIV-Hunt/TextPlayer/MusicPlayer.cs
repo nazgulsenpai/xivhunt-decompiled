@@ -4,15 +4,12 @@ using System.Text;
 
 namespace TextPlayer
 {
-	// Token: 0x02000016 RID: 22
 	public abstract class MusicPlayer : IMusicPlayer
 	{
-		// Token: 0x060000A5 RID: 165 RVA: 0x000020E8 File Offset: 0x000002E8
 		public MusicPlayer()
 		{
 		}
 
-		// Token: 0x060000A6 RID: 166 RVA: 0x000035E8 File Offset: 0x000017E8
 		public void FromFile(string file)
 		{
 			using (StreamReader stream = new StreamReader(file))
@@ -21,10 +18,8 @@ namespace TextPlayer
 			}
 		}
 
-		// Token: 0x060000A7 RID: 167
 		public abstract void Load(string str);
 
-		// Token: 0x060000A8 RID: 168 RVA: 0x00003620 File Offset: 0x00001820
 		public void Load(StreamReader stream)
 		{
 			StringBuilder strBuilder = new StringBuilder();
@@ -37,13 +32,11 @@ namespace TextPlayer
 			this.Load(strBuilder.ToString());
 		}
 
-		// Token: 0x060000A9 RID: 169 RVA: 0x0000366C File Offset: 0x0000186C
 		public virtual void Play()
 		{
 			this.Play(new TimeSpan(DateTime.Now.Ticks));
 		}
 
-		// Token: 0x060000AA RID: 170 RVA: 0x00003691 File Offset: 0x00001891
 		public virtual void Play(TimeSpan currentTime)
 		{
 			if (this.playing)
@@ -55,7 +48,6 @@ namespace TextPlayer
 			this.startTime = currentTime;
 		}
 
-		// Token: 0x060000AB RID: 171 RVA: 0x000036CB File Offset: 0x000018CB
 		public virtual void Stop()
 		{
 			this.playing = false;
@@ -63,13 +55,11 @@ namespace TextPlayer
 			this.lastTime = TimeSpan.Zero;
 		}
 
-		// Token: 0x060000AC RID: 172 RVA: 0x000036EC File Offset: 0x000018EC
 		public virtual void Update()
 		{
 			this.Update(new TimeSpan(DateTime.Now.Ticks));
 		}
 
-		// Token: 0x060000AD RID: 173 RVA: 0x00003711 File Offset: 0x00001911
 		public virtual void Update(TimeSpan currentTime)
 		{
 			if (this.Playing)
@@ -78,13 +68,11 @@ namespace TextPlayer
 			}
 		}
 
-		// Token: 0x060000AE RID: 174 RVA: 0x00003724 File Offset: 0x00001924
 		public virtual void Seek(TimeSpan position)
 		{
 			this.Seek(new TimeSpan(DateTime.Now.Ticks));
 		}
 
-		// Token: 0x060000AF RID: 175 RVA: 0x00003749 File Offset: 0x00001949
 		public virtual void Seek(TimeSpan currentTime, TimeSpan position)
 		{
 			bool flag = this.Muted;
@@ -98,10 +86,8 @@ namespace TextPlayer
 			}
 		}
 
-		// Token: 0x060000B0 RID: 176
 		protected abstract void PlayNote(Note note, int channel, TimeSpan time);
 
-		// Token: 0x060000B1 RID: 177 RVA: 0x0000377C File Offset: 0x0000197C
 		protected void Step(ref Note note, int steps)
 		{
 			if (steps == 0)
@@ -250,20 +236,16 @@ namespace TextPlayer
 			}
 		}
 
-		// Token: 0x060000B2 RID: 178 RVA: 0x000039C3 File Offset: 0x00001BC3
 		public virtual void Mute()
 		{
 			this.muted = true;
 		}
 
-		// Token: 0x060000B3 RID: 179 RVA: 0x000039CC File Offset: 0x00001BCC
 		public virtual void Unmute()
 		{
 			this.muted = false;
 		}
 
-		// Token: 0x1700002A RID: 42
-		// (get) Token: 0x060000B4 RID: 180 RVA: 0x000039D5 File Offset: 0x00001BD5
 		public bool Playing
 		{
 			get
@@ -272,9 +254,6 @@ namespace TextPlayer
 			}
 		}
 
-		// Token: 0x1700002B RID: 43
-		// (get) Token: 0x060000B5 RID: 181 RVA: 0x000039DD File Offset: 0x00001BDD
-		// (set) Token: 0x060000B6 RID: 182 RVA: 0x000039E5 File Offset: 0x00001BE5
 		public bool Muted
 		{
 			get
@@ -296,16 +275,10 @@ namespace TextPlayer
 			}
 		}
 
-		// Token: 0x1700002C RID: 44
-		// (get) Token: 0x060000B7 RID: 183
 		internal abstract ValidationSettings ValidationSettings { get; }
 
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x060000B8 RID: 184
 		public abstract TimeSpan Duration { get; }
 
-		// Token: 0x1700002E RID: 46
-		// (get) Token: 0x060000B9 RID: 185 RVA: 0x00003A01 File Offset: 0x00001C01
 		public virtual TimeSpan Elapsed
 		{
 			get
@@ -314,16 +287,12 @@ namespace TextPlayer
 			}
 		}
 
-		// Token: 0x0400003F RID: 63
 		protected bool playing;
 
-		// Token: 0x04000040 RID: 64
 		protected TimeSpan lastTime;
 
-		// Token: 0x04000041 RID: 65
 		protected TimeSpan startTime;
 
-		// Token: 0x04000042 RID: 66
 		private bool muted;
 	}
 }

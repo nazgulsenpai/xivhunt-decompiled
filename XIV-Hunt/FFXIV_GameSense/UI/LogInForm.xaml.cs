@@ -19,10 +19,8 @@ using XIVDB;
 
 namespace FFXIV_GameSense.UI
 {
-	// Token: 0x020000B4 RID: 180
 	public partial class LogInForm : Window
 	{
-		// Token: 0x060004A4 RID: 1188 RVA: 0x000157EC File Offset: 0x000139EC
 		public LogInForm(ushort wid)
 		{
 			this.InitializeComponent();
@@ -53,7 +51,6 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x060004A5 RID: 1189 RVA: 0x000158F8 File Offset: 0x00013AF8
 		internal static void Link_RequestNavigate(object sender, RequestNavigateEventArgs e)
 		{
 			try
@@ -85,7 +82,6 @@ namespace FFXIV_GameSense.UI
 			e.Handled = true;
 		}
 
-		// Token: 0x060004A6 RID: 1190 RVA: 0x000159D0 File Offset: 0x00013BD0
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			this.LoginFailedTextBlock.Visibility = Visibility.Hidden;
@@ -119,7 +115,6 @@ namespace FFXIV_GameSense.UI
 			this.LoginFailedTextBlock.Visibility = Visibility.Visible;
 		}
 
-		// Token: 0x060004A7 RID: 1191 RVA: 0x00015ABC File Offset: 0x00013CBC
 		private static bool AuthenticateUser(string user, string password, string twofa, out Cookie authCookie, out Cookie twofaCookie)
 		{
 			HttpWebRequest request = (HttpWebRequest)WebRequest.Create(new Uri("https://xivhunt.net/Account/RemoteLogin"));
@@ -160,7 +155,6 @@ namespace FFXIV_GameSense.UI
 			return authCookie != null;
 		}
 
-		// Token: 0x060004A8 RID: 1192 RVA: 0x00015C14 File Offset: 0x00013E14
 		private static bool TwoFA(string twofa, Cookie twofauseridcookie, out Cookie authCookie, out Cookie twofaCookie)
 		{
 			HttpWebRequest request = WebRequest.Create(new Uri("https://xivhunt.net/Account/LoginWith2fa")) as HttpWebRequest;
@@ -187,7 +181,6 @@ namespace FFXIV_GameSense.UI
 			return authCookie != null && twofaCookie != null;
 		}
 
-		// Token: 0x060004A9 RID: 1193 RVA: 0x00015D24 File Offset: 0x00013F24
 		private static byte[] ObjectToByteArray(object obj)
 		{
 			BinaryFormatter bf = new BinaryFormatter();
@@ -200,31 +193,22 @@ namespace FFXIV_GameSense.UI
 			return result;
 		}
 
-		// Token: 0x04000389 RID: 905
 		private const string Login2FaUrl = "https://xivhunt.net/Account/LoginWith2fa";
 
-		// Token: 0x0400038A RID: 906
 		private const string RemoteLoginUrl = "https://xivhunt.net/Account/RemoteLogin";
 
-		// Token: 0x0400038B RID: 907
 		private const string AccountLoginUrl = "https://xivhunt.net/Account/Login";
 
-		// Token: 0x0400038C RID: 908
 		private const string IdentityCookieName = ".AspNetCore.Identity.Application";
 
-		// Token: 0x0400038D RID: 909
 		private const string TwoFactorUserIdCookieName = "Identity.TwoFactorUserId";
 
-		// Token: 0x0400038E RID: 910
 		private const string FormEncodingType = "application/x-www-form-urlencoded";
 
-		// Token: 0x0400038F RID: 911
 		internal const string TwoFactorRememberMeCookieName = "Identity.TwoFactorRememberMe";
 
-		// Token: 0x04000390 RID: 912
 		internal const string XIVHuntNet = "XIVHunt.net";
 
-		// Token: 0x04000391 RID: 913
 		internal CookieContainer receivedCookies = new CookieContainer(2);
 	}
 }

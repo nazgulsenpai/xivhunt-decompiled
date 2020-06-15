@@ -5,10 +5,8 @@ using System.Text.RegularExpressions;
 
 namespace TextPlayer.MML
 {
-	// Token: 0x0200001C RID: 28
 	public struct MMLCommand
 	{
-		// Token: 0x060000D4 RID: 212 RVA: 0x00003C18 File Offset: 0x00001E18
 		public static MMLCommand Parse(string token)
 		{
 			MMLCommand cmd = default(MMLCommand);
@@ -87,20 +85,16 @@ namespace TextPlayer.MML
 			return cmd;
 		}
 
-		// Token: 0x060000D5 RID: 213 RVA: 0x00003DB4 File Offset: 0x00001FB4
 		private static void AddPart(List<string> args, string token, string pattern)
 		{
 			string s = Regex.Match(token, pattern).Value;
 			args.Add(s);
 		}
 
-		// Token: 0x04000051 RID: 81
 		public MMLCommandType Type;
 
-		// Token: 0x04000052 RID: 82
 		public List<string> Args;
 
-		// Token: 0x04000053 RID: 83
 		internal static readonly string lengths = "(" + string.Join<int>("|", Enumerable.Range(1, 32).Concat(new int[]
 		{
 			64

@@ -19,10 +19,8 @@ using XIVDB;
 
 namespace FFXIV_GameSense.UI
 {
-	// Token: 0x020000B0 RID: 176
 	public partial class FATEsListView : UserControl, IStyleConnector
 	{
-		// Token: 0x06000480 RID: 1152 RVA: 0x00014B20 File Offset: 0x00012D20
 		public FATEsListView()
 		{
 			this.InitializeComponent();
@@ -31,7 +29,6 @@ namespace FFXIV_GameSense.UI
 			this.PresetCheckComboBox.ItemSelectionChanged += this.PresetCheckComboBox_ItemSelectionChanged;
 		}
 
-		// Token: 0x06000481 RID: 1153 RVA: 0x00014B54 File Offset: 0x00012D54
 		private void AddPresets()
 		{
 			foreach (FATEPresetViewItem p in from x in GameResources.GetRelicNotes()
@@ -54,7 +51,6 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x06000482 RID: 1154 RVA: 0x00014C34 File Offset: 0x00012E34
 		private void PresetCheckComboBox_ItemSelectionChanged(object sender, ItemSelectionChangedEventArgs e)
 		{
 			IEnumerable<FATEListViewItem> source = this.ListView.ItemsSource.Cast<FATEListViewItem>();
@@ -71,7 +67,6 @@ namespace FFXIV_GameSense.UI
 			this.CheckBox_Checked(null, null);
 		}
 
-		// Token: 0x06000483 RID: 1155 RVA: 0x00014CCC File Offset: 0x00012ECC
 		private bool Filter(object obj)
 		{
 			if (string.IsNullOrWhiteSpace(this.FilterTextBox.Text))
@@ -82,7 +77,6 @@ namespace FFXIV_GameSense.UI
 			return item.Name.IndexOf(this.FilterTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0 || item.Zones.IndexOf(this.FilterTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0 || item.ID.ToString(CultureInfo.CurrentCulture) == this.FilterTextBox.Text;
 		}
 
-		// Token: 0x06000484 RID: 1156 RVA: 0x00014D50 File Offset: 0x00012F50
 		private void FATEsListView_GridViewColumnHeaderClick(object sender, RoutedEventArgs e)
 		{
 			GridViewColumnHeader headerClicked = e.OriginalSource as GridViewColumnHeader;
@@ -120,7 +114,6 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x06000485 RID: 1157 RVA: 0x00014E30 File Offset: 0x00013030
 		private void Sort(string sortBy, ListSortDirection direction)
 		{
 			ICollectionView defaultView = CollectionViewSource.GetDefaultView(this.ListView.ItemsSource);
@@ -130,7 +123,6 @@ namespace FFXIV_GameSense.UI
 			defaultView.Refresh();
 		}
 
-		// Token: 0x06000486 RID: 1158 RVA: 0x00014E74 File Offset: 0x00013074
 		private void FilterTextBox_GotFocus(object sender, RoutedEventArgs e)
 		{
 			this.FilterCoverTextBlock.Visibility = Visibility.Hidden;
@@ -141,7 +133,6 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x06000487 RID: 1159 RVA: 0x00014EC2 File Offset: 0x000130C2
 		private void FilterTextBox_LostFocus(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrWhiteSpace(((TextBox)sender).Text))
@@ -150,13 +141,11 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x06000488 RID: 1160 RVA: 0x00014EE2 File Offset: 0x000130E2
 		private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			CollectionViewSource.GetDefaultView(this.ListView.ItemsSource).Refresh();
 		}
 
-		// Token: 0x06000489 RID: 1161 RVA: 0x00014EFC File Offset: 0x000130FC
 		private void CheckBox_Checked(object sender, RoutedEventArgs e)
 		{
 			if (e != null)
@@ -172,7 +161,6 @@ namespace FFXIV_GameSense.UI
 			this.FATESelected(null, EventArgs.Empty);
 		}
 
-		// Token: 0x0600048A RID: 1162 RVA: 0x00014F50 File Offset: 0x00013150
 		private void UpdatePresetCheckComboBox(RoutedEventArgs e)
 		{
 			CheckBox cb = (CheckBox)e.Source;
@@ -225,7 +213,6 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x0600048B RID: 1163 RVA: 0x000151D8 File Offset: 0x000133D8
 		private void UpdateFATEsSelectedCount()
 		{
 			if (Settings.Default.FATEs.Count == 1)
@@ -242,24 +229,16 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x14000006 RID: 6
-		// (add) Token: 0x0600048C RID: 1164 RVA: 0x00015288 File Offset: 0x00013488
-		// (remove) Token: 0x0600048D RID: 1165 RVA: 0x000152C0 File Offset: 0x000134C0
 		public event EventHandler AllFATEsDeselected;
 
-		// Token: 0x14000007 RID: 7
-		// (add) Token: 0x0600048E RID: 1166 RVA: 0x000152F8 File Offset: 0x000134F8
-		// (remove) Token: 0x0600048F RID: 1167 RVA: 0x00015330 File Offset: 0x00013530
 		public event EventHandler FATESelected;
 
-		// Token: 0x06000490 RID: 1168 RVA: 0x00015368 File Offset: 0x00013568
 		private void ResizeFilterBox()
 		{
 			this.FilterTextBox.BeginAnimation(FrameworkElement.WidthProperty, null);
 			this.FilterTextBox.Width = ((Grid)this.FilterTextBox.Parent).ColumnDefinitions[0].ActualWidth - this.SelectedFateCountTextBlock.ActualWidth - (double)((this.SelectedFateCountTextBlock.ActualWidth > 0.0) ? 12 : 5);
 		}
 
-		// Token: 0x06000491 RID: 1169 RVA: 0x000153DC File Offset: 0x000135DC
 		private void SelectedFateCountTextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
 		{
 			double newWidth = ((Grid)this.FilterTextBox.Parent).ColumnDefinitions[0].ActualWidth - e.NewSize.Width - (double)((e.NewSize.Width > 0.0) ? 12 : 5);
@@ -271,13 +250,11 @@ namespace FFXIV_GameSense.UI
 			});
 		}
 
-		// Token: 0x06000492 RID: 1170 RVA: 0x00015489 File Offset: 0x00013689
 		private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
 		{
 			this.ResizeFilterBox();
 		}
 
-		// Token: 0x06000495 RID: 1173 RVA: 0x000155CE File Offset: 0x000137CE
 		[DebuggerNonUserCode]
 		[GeneratedCode("PresentationBuildTasks", "4.8.1.0")]
 		[EditorBrowsable(EditorBrowsableState.Never)]
@@ -290,13 +267,10 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x04000375 RID: 885
 		private GridViewColumnHeader _lastHeaderClicked;
 
-		// Token: 0x04000376 RID: 886
 		private ListSortDirection _lastDirection;
 
-		// Token: 0x04000377 RID: 887
 		private bool filterApplied;
 	}
 }

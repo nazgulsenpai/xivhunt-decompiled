@@ -16,10 +16,8 @@ using Process.NET.Memory;
 
 namespace FFXIV_GameSense.UI
 {
-	// Token: 0x020000B8 RID: 184
 	public partial class OverlayView : UserControl, IDisposable
 	{
-		// Token: 0x060004B8 RID: 1208 RVA: 0x00016180 File Offset: 0x00014380
 		public OverlayView()
 		{
 			this.InitializeComponent();
@@ -29,7 +27,6 @@ namespace FFXIV_GameSense.UI
 			this.RadarBGOpacityTextBox.TextChanged += this.RadarBGOpacityTextBox_TextChanged;
 		}
 
-		// Token: 0x060004B9 RID: 1209 RVA: 0x000161F8 File Offset: 0x000143F8
 		private void RadarEntityScaleTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			TextBox textbox = sender as TextBox;
@@ -53,7 +50,6 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x060004BA RID: 1210 RVA: 0x00016278 File Offset: 0x00014478
 		private void RadarEntityOpacityTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			TextBox textbox = sender as TextBox;
@@ -77,7 +73,6 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x060004BB RID: 1211 RVA: 0x000162E4 File Offset: 0x000144E4
 		private void RadarBGOpacityTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			TextBox textbox = sender as TextBox;
@@ -103,7 +98,6 @@ namespace FFXIV_GameSense.UI
 			radarOverlay.SetBackgroundOpacity();
 		}
 
-		// Token: 0x060004BC RID: 1212 RVA: 0x00016360 File Offset: 0x00014560
 		private void RadarMaxFrameRateTextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			TextBox textbox = sender as TextBox;
@@ -129,7 +123,6 @@ namespace FFXIV_GameSense.UI
 			radarOverlay.SetNewFrameRate();
 		}
 
-		// Token: 0x060004BD RID: 1213 RVA: 0x000163E4 File Offset: 0x000145E4
 		private void _2DRadarToggle(object sender, RoutedEventArgs e)
 		{
 			ToggleButton b = (ToggleButton)sender;
@@ -181,7 +174,6 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x060004BE RID: 1214 RVA: 0x000164A4 File Offset: 0x000146A4
 		protected virtual void Dispose(bool disposing)
 		{
 			if (!this.disposedValue)
@@ -207,13 +199,11 @@ namespace FFXIV_GameSense.UI
 			}
 		}
 
-		// Token: 0x060004BF RID: 1215 RVA: 0x00016527 File Offset: 0x00014727
 		public void Dispose()
 		{
 			this.Dispose(true);
 		}
 
-		// Token: 0x060004C0 RID: 1216 RVA: 0x00016530 File Offset: 0x00014730
 		private void ClickthruCheckBox_Checked(object sender, RoutedEventArgs e)
 		{
 			RadarOverlay radarOverlay = this.ro;
@@ -224,7 +214,6 @@ namespace FFXIV_GameSense.UI
 			radarOverlay.MakeClickthru();
 		}
 
-		// Token: 0x060004C1 RID: 1217 RVA: 0x00016542 File Offset: 0x00014742
 		private void ClickthruCheckBox_Unchecked(object sender, RoutedEventArgs e)
 		{
 			RadarOverlay radarOverlay = this.ro;
@@ -235,7 +224,6 @@ namespace FFXIV_GameSense.UI
 			radarOverlay.MakeClickable();
 		}
 
-		// Token: 0x060004C2 RID: 1218 RVA: 0x00016554 File Offset: 0x00014754
 		private void ResizeCheckBox_Checked_1(object sender, RoutedEventArgs e)
 		{
 			RadarOverlay radarOverlay = this.ro;
@@ -246,7 +234,6 @@ namespace FFXIV_GameSense.UI
 			radarOverlay.DisableResizeMode();
 		}
 
-		// Token: 0x060004C3 RID: 1219 RVA: 0x00016566 File Offset: 0x00014766
 		private void ResizeCheckBox_Unchecked_1(object sender, RoutedEventArgs e)
 		{
 			RadarOverlay radarOverlay = this.ro;
@@ -257,16 +244,12 @@ namespace FFXIV_GameSense.UI
 			radarOverlay.EnableResizeMode();
 		}
 
-		// Token: 0x040003A3 RID: 931
 		private Thread RadarOverlayThread;
 
-		// Token: 0x040003A4 RID: 932
 		private RadarOverlay ro;
 
-		// Token: 0x040003A5 RID: 933
 		private CancellationTokenSource cts;
 
-		// Token: 0x040003A6 RID: 934
 		private bool disposedValue;
 	}
 }

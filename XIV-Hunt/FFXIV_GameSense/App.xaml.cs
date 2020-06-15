@@ -19,10 +19,8 @@ using Windows.UI.Notifications;
 
 namespace FFXIV_GameSense
 {
-	// Token: 0x02000024 RID: 36
 	public partial class App : Application
 	{
-		// Token: 0x06000127 RID: 295 RVA: 0x00005220 File Offset: 0x00003420
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			AppDomain.CurrentDomain.UnhandledException += App.CurrentDomain_UnhandledException;
@@ -80,7 +78,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x06000128 RID: 296 RVA: 0x00005378 File Offset: 0x00003578
 		private static bool RestoreSettings()
 		{
 			bool isFirstInstall = false;
@@ -107,13 +104,11 @@ namespace FFXIV_GameSense
 			return isFirstInstall;
 		}
 
-		// Token: 0x06000129 RID: 297 RVA: 0x00005414 File Offset: 0x00003614
 		private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
 		{
 			App.WriteExceptionToErrorFile((Exception)e.ExceptionObject);
 		}
 
-		// Token: 0x0600012A RID: 298 RVA: 0x00005428 File Offset: 0x00003628
 		internal static void WriteExceptionToErrorFile(Exception ex)
 		{
 			File.AppendAllText(Path.Combine(Environment.CurrentDirectory, "error.txt"), string.Format("{0} {1}:{2}{3}{4}{5}", new object[]
@@ -140,13 +135,11 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600012B RID: 299 RVA: 0x0000550C File Offset: 0x0000370C
 		internal static bool IsSquirrelInstall()
 		{
 			return File.Exists(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "..", "Update.exe"));
 		}
 
-		// Token: 0x0600012C RID: 300 RVA: 0x00005534 File Offset: 0x00003734
 		private static void TryShowInstalledShortcutInfoToast()
 		{
 			try
@@ -158,7 +151,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600012D RID: 301 RVA: 0x0000555C File Offset: 0x0000375C
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		private static void ShowInstalledShortcutInfoToast()
 		{
@@ -200,7 +192,6 @@ namespace FFXIV_GameSense
 			}
 		}
 
-		// Token: 0x0600012E RID: 302 RVA: 0x00005660 File Offset: 0x00003860
 		public static string GetAppTitle()
 		{
 			AssemblyTitleAttribute assemblyTitleAttribute = (AssemblyTitleAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyTitleAttribute), false);
@@ -211,7 +202,6 @@ namespace FFXIV_GameSense
 			return assemblyTitleAttribute.Title;
 		}
 
-		// Token: 0x04000082 RID: 130
 		internal const string AppID = "com.squirrel.XIVHunt.XIV-Hunt";
 	}
 }
