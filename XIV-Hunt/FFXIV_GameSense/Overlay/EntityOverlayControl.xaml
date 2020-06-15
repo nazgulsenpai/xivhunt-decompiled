@@ -1,0 +1,32 @@
+<UserControl
+	x:Class="FFXIV_GameSense.Overlay.EntityOverlayControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:UI="clr-namespace:FFXIV_GameSense.UI" xmlns:properties="clr-namespace:FFXIV_GameSense.Properties"
+	Width="Auto" xmlns:overlay="clr-namespace:FFXIV_GameSense.Overlay">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<UI:ByteToPercentageConverter
+				x:Key="ByteToPercentageConverter" />
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<Grid
+		Opacity="{Binding Source={x:Static properties:Settings.Default}, Path=RadarEntityOpacity, Converter={StaticResource ByteToPercentageConverter}}">
+		<FrameworkElement.LayoutTransform>
+			<ScaleTransform
+				ScaleX="{Binding Source={x:Static properties:Settings.Default}, Path=RadarEntityScale}"
+				ScaleY="{Binding Source={x:Static properties:Settings.Default}, Path=RadarEntityScale}" />
+		</FrameworkElement.LayoutTransform>
+		<Image
+			Name="image"
+			Height="26"
+			Width="26"
+			VerticalAlignment="Top"
+			RenderTransformOrigin=".5,.5"
+			Source="{Binding Path=Icon}" />
+		<TextBlock
+			Width="Auto"
+			TextAlignment="Center"
+			FontWeight="Bold"
+			Margin="0,24,0,0"
+			Text="{Binding Path=Name}"
+			Foreground="{Binding Path=NameColor}" />
+	</Grid>
+</UserControl>

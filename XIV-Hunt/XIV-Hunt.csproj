@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <ProjectGuid>{DA49D064-08C9-463B-BCED-978D3AA3F549}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>XIV-Hunt</RootNamespace>
+    <AssemblyName>XIV-Hunt</AssemblyName>
+    <TargetFrameworkVersion>v3.1</TargetFrameworkVersion>
+    <TargetFrameworkIdentifier>.NETCoreApp</TargetFrameworkIdentifier>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>XIV-Hunt.ico</ApplicationIcon>
+    <StartupObject>FFXIV_GameSense.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Http.Connections.Client">
+      <HintPath>..\..\Microsoft.AspNetCore.Http.Connections.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client">
+      <HintPath>..\..\Microsoft.AspNetCore.SignalR.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Client.Core">
+      <HintPath>..\..\Microsoft.AspNetCore.SignalR.Client.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson">
+      <HintPath>..\..\Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <HintPath>..\..\Microsoft.Toolkit.Uwp.Notifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Primitives">
+      <HintPath>..\..\Microsoft.Win32.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry">
+      <HintPath>..\..\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio">
+      <HintPath>..\..\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Overlay.NET">
+      <HintPath>..\..\Overlay.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <HintPath>..\..\PresentationCore.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <HintPath>..\..\PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Process.NET">
+      <HintPath>..\..\Process.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat">
+      <HintPath>..\..\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="Squirrel">
+      <HintPath>..\..\Squirrel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>..\..\System.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel">
+      <HintPath>..\..\System.ComponentModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>..\..\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter">
+      <HintPath>..\..\System.ComponentModel.TypeConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager">
+      <HintPath>..\..\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Debug">
+      <HintPath>..\..\System.Diagnostics.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Process">
+      <HintPath>..\..\System.Diagnostics.Process.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tools">
+      <HintPath>..\..\System.Diagnostics.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>..\..\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives">
+      <HintPath>..\..\System.Drawing.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem">
+      <HintPath>..\..\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Watcher">
+      <HintPath>..\..\System.IO.FileSystem.Watcher.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipes">
+      <HintPath>..\..\System.IO.Pipes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq">
+      <HintPath>..\..\System.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\..\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Primitives">
+      <HintPath>..\..\System.Net.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Requests">
+      <HintPath>..\..\System.Net.Requests.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ObjectModel">
+      <HintPath>..\..\System.ObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.ResourceManager">
+      <HintPath>..\..\System.Resources.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\..\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions">
+      <HintPath>..\..\System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices">
+      <HintPath>..\..\System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>..\..\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters">
+      <HintPath>..\..\System.Runtime.Serialization.Formatters.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions">
+      <HintPath>..\..\System.Text.RegularExpressions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>..\..\System.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\..\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread">
+      <HintPath>..\..\System.Threading.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <HintPath>..\..\System.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Windows" />
+    <Reference Include="WindowsBase">
+      <HintPath>..\..\WindowsBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\..\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="-Module-.cs" />
+    <Compile Include="FFXIV_GameSense\Aetheryte.cs" />
+    <Compile Include="FFXIV_GameSense\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\ApplicationRunningHelper.cs" />
+    <Compile Include="FFXIV_GameSense\Area.cs" />
+    <Compile Include="FFXIV_GameSense\CardStand.cs" />
+    <Compile Include="FFXIV_GameSense\ChatChannel.cs" />
+    <Compile Include="FFXIV_GameSense\ChatFilter.cs" />
+    <Compile Include="FFXIV_GameSense\ChatMessage.cs" />
+    <Compile Include="FFXIV_GameSense\Combatant.cs" />
+    <Compile Include="FFXIV_GameSense\CombatantOffsets.cs" />
+    <Compile Include="FFXIV_GameSense\Command.cs" />
+    <Compile Include="FFXIV_GameSense\CommandEventArgs.cs" />
+    <Compile Include="FFXIV_GameSense\ContentFinder.cs" />
+    <Compile Include="FFXIV_GameSense\ContentFinderOffsets.cs" />
+    <Compile Include="FFXIV_GameSense\ContentFinderState.cs" />
+    <Compile Include="FFXIV_GameSense\Cutscene.cs" />
+    <Compile Include="FFXIV_GameSense\DataCenterInstanceMatchInfo.cs" />
+    <Compile Include="FFXIV_GameSense\Entity.cs" />
+    <Compile Include="FFXIV_GameSense\EObject.cs" />
+    <Compile Include="FFXIV_GameSense\EObjType.cs" />
+    <Compile Include="FFXIV_GameSense\Extensions.cs" />
+    <Compile Include="FFXIV_GameSense\FATE.cs" />
+    <Compile Include="FFXIV_GameSense\FATEReport.cs" />
+    <Compile Include="FFXIV_GameSense\FATEState.cs" />
+    <Compile Include="FFXIV_GameSense\FFXIVHunts.cs" />
+    <Compile Include="FFXIV_GameSense\FFXIVMemory.cs" />
+    <Compile Include="FFXIV_GameSense\FFXIVProcessHelper.cs" />
+    <Compile Include="FFXIV_GameSense\GameRegion.cs" />
+    <Compile Include="FFXIV_GameSense\GatheringPoint.cs" />
+    <Compile Include="FFXIV_GameSense\Housing.cs" />
+    <Compile Include="FFXIV_GameSense\Hunt.cs" />
+    <Compile Include="FFXIV_GameSense\HuntRank.cs" />
+    <Compile Include="FFXIV_GameSense\HuntsHubConnection.cs" />
+    <Compile Include="FFXIV_GameSense\IPC\ChatMessage.cs" />
+    <Compile Include="FFXIV_GameSense\IPC\PersistentNamedPipeServer.cs" />
+    <Compile Include="FFXIV_GameSense\IPC\PipeMessage.cs" />
+    <Compile Include="FFXIV_GameSense\IPC\PMCommand.cs" />
+    <Compile Include="FFXIV_GameSense\JobEnum.cs" />
+    <Compile Include="FFXIV_GameSense\JoinGroupResult.cs" />
+    <Compile Include="FFXIV_GameSense\Logger.cs" />
+    <Compile Include="FFXIV_GameSense\MemoryScanException.cs" />
+    <Compile Include="FFXIV_GameSense\Minion.cs" />
+    <Compile Include="FFXIV_GameSense\MML\ImplementedPlayer.cs" />
+    <Compile Include="FFXIV_GameSense\Monster.cs" />
+    <Compile Include="FFXIV_GameSense\Mount.cs" />
+    <Compile Include="FFXIV_GameSense\NativeMethods.cs" />
+    <Compile Include="FFXIV_GameSense\Note.cs" />
+    <Compile Include="FFXIV_GameSense\NPC.cs" />
+    <Compile Include="FFXIV_GameSense\Overlay\EntityOverlayControl.xaml.cs">
+      <DependentUpon>EntityOverlayControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\Overlay\EntityOverlayControlViewModel.cs" />
+    <Compile Include="FFXIV_GameSense\PC.cs" />
+    <Compile Include="FFXIV_GameSense\Performance.cs" />
+    <Compile Include="FFXIV_GameSense\Program.cs" />
+    <Compile Include="FFXIV_GameSense\Properties\ObservableHashSet.cs" />
+    <Compile Include="FFXIV_GameSense\Properties\Resources.cs" />
+    <Compile Include="FFXIV_GameSense\Properties\Settings.cs" />
+    <Compile Include="FFXIV_GameSense\Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\RadarOverlay.cs" />
+    <Compile Include="FFXIV_GameSense\Reporter.cs" />
+    <Compile Include="FFXIV_GameSense\Retainer.cs" />
+    <Compile Include="FFXIV_GameSense\Sender.cs" />
+    <Compile Include="FFXIV_GameSense\SettingsForm.xaml.cs">
+      <DependentUpon>SettingsForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\SoundPlayer.cs" />
+    <Compile Include="FFXIV_GameSense\Status.cs" />
+    <Compile Include="FFXIV_GameSense\SubscriptionUpdate.cs" />
+    <Compile Include="FFXIV_GameSense\Treasure.cs" />
+    <Compile Include="FFXIV_GameSense\UI\AlarmButton.xaml.cs">
+      <DependentUpon>AlarmButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\UI\AlarmButtonModel.cs" />
+    <Compile Include="FFXIV_GameSense\UI\ByteToPercentageConverter.cs" />
+    <Compile Include="FFXIV_GameSense\UI\Controls\LanguageSelector.xaml.cs">
+      <DependentUpon>LanguageSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\UI\FATEListViewItem.cs" />
+    <Compile Include="FFXIV_GameSense\UI\FATEPresetViewItem.cs" />
+    <Compile Include="FFXIV_GameSense\UI\FATEsListView.xaml.cs">
+      <DependentUpon>FATEsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\UI\LanguageSelector.xaml.cs">
+      <DependentUpon>LanguageSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\UI\LogInForm.xaml.cs">
+      <DependentUpon>LogInForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\UI\LogView.xaml.cs">
+      <DependentUpon>LogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\UI\OverlayView.xaml.cs">
+      <DependentUpon>OverlayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\UI\PerformanceFileListView.xaml.cs">
+      <DependentUpon>PerformanceFileListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFXIV_GameSense\UI\PerformanceListViewItem.cs" />
+    <Compile Include="FFXIV_GameSense\UI\ProcessModuleToIconToImageSourceConverter.cs" />
+    <Compile Include="FFXIV_GameSense\UI\SystemDateTimeFormatConverter.cs" />
+    <Compile Include="FFXIV_GameSense\Updater.cs" />
+    <Compile Include="FFXIV_GameSense\ViewModel.cs" />
+    <Compile Include="FFXIV_GameSense\Window1.cs" />
+    <Compile Include="FFXIV_GameSense\World.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceEmbedderCompilerGenerated\ResourceEmbedderILInjected.cs" />
+    <Compile Include="TextPlayer\IMusicPlayer.cs" />
+    <Compile Include="TextPlayer\MML\MalformedMMLException.cs" />
+    <Compile Include="TextPlayer\MML\MMLCommand.cs" />
+    <Compile Include="TextPlayer\MML\MMLCommandType.cs" />
+    <Compile Include="TextPlayer\MML\MMLLength.cs" />
+    <Compile Include="TextPlayer\MML\MMLMode.cs" />
+    <Compile Include="TextPlayer\MML\MMLPlayer.cs" />
+    <Compile Include="TextPlayer\MML\MMLPlayerTrack.cs" />
+    <Compile Include="TextPlayer\MML\MMLSettings.cs" />
+    <Compile Include="TextPlayer\MML\MultiTrackMMLPlayer.cs" />
+    <Compile Include="TextPlayer\MusicPlayer.cs" />
+    <Compile Include="TextPlayer\Note.cs" />
+    <Compile Include="TextPlayer\SongDurationException.cs" />
+    <Compile Include="TextPlayer\SongSizeException.cs" />
+    <Compile Include="TextPlayer\ValidationSettings.cs" />
+    <Compile Include="XIVAPI\Item.cs" />
+    <Compile Include="XIVDB\AppData.cs" />
+    <Compile Include="XIVDB\AppPosition.cs" />
+    <Compile Include="XIVDB\CsvParser.cs" />
+    <Compile Include="XIVDB\EnemyObject.cs" />
+    <Compile Include="XIVDB\Fate.cs" />
+    <Compile Include="XIVDB\FATEInfo.cs" />
+    <Compile Include="XIVDB\GameResources.cs" />
+    <Compile Include="XIVDB\Map_Data.cs" />
+    <Compile Include="XIVDB\Point.cs" />
+    <Compile Include="XIVDB\Position.cs" />
+    <Compile Include="XIVDB\RelicNote.cs" />
+    <Compile Include="XIVDB\World.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FFXIV_GameSense\Properties\Resources.resources" />
+    <EmbeddedResource Include="XIV-Hunt.de-DE.resources.dll" />
+    <EmbeddedResource Include="XIV-Hunt.fr-FR.resources.dll" />
+    <EmbeddedResource Include="XIV-Hunt.ja-JP.resources.dll" />
+    <EmbeddedResource Include="XIV-Hunt.ko-KR.resources.dll" />
+    <EmbeddedResource Include="XIV-Hunt.zh-CN.resources.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="FFXIV_GameSense\Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="FFXIV_GameSense\App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="FFXIV_GameSense\Overlay\EntityOverlayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFXIV_GameSense\SettingsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFXIV_GameSense\UI\AlarmButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFXIV_GameSense\UI\Controls\LanguageSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFXIV_GameSense\UI\FATEsListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFXIV_GameSense\UI\LanguageSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFXIV_GameSense\UI\LogInForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFXIV_GameSense\UI\LogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFXIV_GameSense\UI\OverlayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFXIV_GameSense\UI\PerformanceFileListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="menuformwpf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\bnpcname.csv" />
+    <Resource Include="resources\bnpcname.de.csv" />
+    <Resource Include="resources\bnpcname.fr.csv" />
+    <Resource Include="resources\bnpcname.ja.csv" />
+    <Resource Include="resources\bnpcname.ko.csv" />
+    <Resource Include="resources\bnpcname.zh.csv" />
+    <Resource Include="resources\enemy.ico" />
+    <Resource Include="resources\fate.csv" />
+    <Resource Include="resources\fate.de.csv" />
+    <Resource Include="resources\fate.fr.csv" />
+    <Resource Include="resources\fate.ja.csv" />
+    <Resource Include="resources\fate.ko.csv" />
+    <Resource Include="resources\fate.zh.csv" />
+    <Resource Include="resources\hunt_x64.dll" />
+    <Resource Include="resources\hunt_x64_cn.dll" />
+    <Resource Include="resources\hunt_x64_kr.dll" />
+    <Resource Include="resources\images\banded.png" />
+    <Resource Include="resources\images\chinese.png" />
+    <Resource Include="resources\images\deleteicon.png" />
+    <Resource Include="resources\images\english.png" />
+    <Resource Include="resources\images\french.png" />
+    <Resource Include="resources\images\german.png" />
+    <Resource Include="resources\images\japanese.png" />
+    <Resource Include="resources\images\korean.png" />
+    <Resource Include="resources\images\npc.png" />
+    <Resource Include="resources\images\sound_off.png" />
+    <Resource Include="resources\images\sound_on.png" />
+    <Resource Include="resources\images\ui\icon\060000\060354.tex.png" />
+    <Resource Include="resources\images\ui\icon\060000\060355.tex.png" />
+    <Resource Include="resources\images\ui\icon\060000\060356.tex.png" />
+    <Resource Include="resources\images\ui\icon\060000\060443.tex.png" />
+    <Resource Include="resources\images\ui\icon\060000\060453.tex.png" />
+    <Resource Include="resources\images\ui\icon\060000\060905.tex.png" />
+    <Resource Include="resources\images\ui\icon\060000\060906.tex.png" />
+    <Resource Include="resources\images\ui\icon\060000\060907.tex.png" />
+    <Resource Include="resources\images\ui\icon\060000\060908.tex.png" />
+    <Resource Include="resources\images\ui\uld\image2.tex.png" />
+    <Resource Include="resources\logicon.png" />
+    <Resource Include="resources\map.csv" />
+    <Resource Include="resources\perform.csv" />
+    <Resource Include="resources\relicnote.csv" />
+    <Resource Include="resources\relicnote.de.csv" />
+    <Resource Include="resources\relicnote.fr.csv" />
+    <Resource Include="resources\relicnote.ja.csv" />
+    <Resource Include="resources\relicnote.ko.csv" />
+    <Resource Include="resources\relicnote.zh.csv" />
+    <Resource Include="resources\settingsicon.png" />
+    <Resource Include="resources\territorytype.csv" />
+    <Resource Include="resources\territorytype.de.csv" />
+    <Resource Include="resources\territorytype.fr.csv" />
+    <Resource Include="resources\territorytype.ja.csv" />
+    <Resource Include="resources\territorytype.ko.csv" />
+    <Resource Include="resources\territorytype.zh.csv" />
+    <Resource Include="resources\veteranclanmarks.txt" />
+    <Resource Include="resources\world.csv" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
